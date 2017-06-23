@@ -1,0 +1,74 @@
+/*Standards, units and measures*/
+
+$html-default:          62.5%;
+$line-height:           1.4;
+$icon-line-height:      $line-height;
+$font-size:             1rem;
+$font-size-default:     $font-size * 1.6;
+$h1-default:            $font-size * 5;
+$h2-default:            $font-size * 3.2;
+$h3-default:            $font-size * 2.4;
+$h4-default:            $font-size * 2;
+$h5-default:            $font-size * 1.8;
+$xs-icon:               $font-size;
+$md-icon:               $font-size * 1.25;
+$lg-icon:               $font-size * 3;
+$xl-icon:               $font-size * 12;
+$xs-font-size:          $font-size * 1.1;
+
+$default-space:         10px;
+$hair-space:            $default-space * .2;
+$thin-space:            $default-space * .4;
+$short-space:           $default-space * .8;
+$comfortable-space:     $default-space * 1.36;
+$accordion-label-mr:    $comfortable-space;
+$generous-space:        $default-space * 1.8;
+$add-btn-min:           $default-space * 2.4;
+$accordion-label:       $default-space * 4.8;
+
+$icon-text-btn-padding: $short-space $default-space $short-space $thin-space;
+$button-sm-padding:     .2em 1em;
+$button-md-padding:     .5em 1.7em;
+
+$icon-width-height:     2.4rem;
+
+$transition-out:        .2s ease-in-out;
+$transition-in:         .5s ease-in-out;
+
+$ribbon-height:         4.6rem;
+$ribbon-shadow:         0 5px 15px $shadow;
+$dropdown-shadow:       2px 4px 12px $shadow;
+
+.hide {display: none;}
+
+/*Animations*/
+
+$text-out-transition:   color $transition-out;
+$text-in-transition:    color $transition-in;
+
+$border-out-transition: border-color $transition-out;
+$border-in-transition:  border-color $transition-in;
+
+$button-out-transition: color $transition-out, background-color $transition-out;
+$button-in-transition:  color $transition-in, background-color $transition-in;
+
+$milestone-v-button-out:    color $transition-out, background-color $transition-out, border-right $transition-out;
+$milestone-v-button-in:     color $transition-in, background-color $transition-in, border-right $transition-in;
+
+$open-accordion-panel:  height $transition-out;
+$close-accordion-panel: height $transition-in;
+
+$accordion-margin-in:   margin $transition-in;
+$accordion-margin-out:  margin $transition-out;
+
+/*Border Effects*/
+
+$triangle-top-border:       50px solid transparent; 
+$triangle-right:            100px solid $neutral05; 
+$triangle-bottom:           50px solid transparent; 
+
+
+/*Contextual Controls*/
+
+$add-button:            5px 10px;
+$milestone-btn-normal:  $default-space solid $neutral07;

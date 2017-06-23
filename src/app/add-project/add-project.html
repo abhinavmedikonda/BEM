@@ -1,0 +1,171 @@
+<main class="task-view phase-view">
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="task-panel">
+            <section class="column third required">
+                <div class="field large-clean-input">
+                    <p class="control" title="Name Your Project">
+                        <input class="input is-large" name="Name" type="text" [(ngModel)]="projectName" placeholder="Name Your Project" required
+                               auto-complete max-num-list=10 [(ngModel)]="projectEntered" [source]="projectNames">
+                    </p>
+                </div>
+
+                <div class="field-group">
+                    <div class="field">
+                        <label class="label field-label">description</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Summarize your project">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <h4>Please add at least one Phase</h4>
+                    <div class="field">
+                        <label class="label field-label">phase</label>
+                        <p class="control">
+                            <input class="input" name="Phase" [(ngModel)]="phase" type="text" placeholder="Phase name" auto-complete max-num-list=10
+                                   [(ngModel)]="phaseEntered" [source]="phaseNames">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <h4>Please add at least one Milestone</h4>
+                    <div class="field">
+                        <label class="label field-label">milestone</label>
+                        <p class="control">
+                            <input class="input" name="mileStone" [(ngModel)]="mileStone" type="text" placeholder="Milestone name" auto-complete max-num-list=10
+                                   [(ngModel)]="milestoneEntered" [source]="milestoneNames">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="field-group">
+
+                    <h4>Please add at least one Device</h4>
+                    <div class="field">
+                        <label class="label field-label">device</label>
+                        <p class="control">
+                            <input class="input" name="device" [(ngModel)]="device" type="text" placeholder="Device name" auto-complete max-num-list=10
+                                   [(ngModel)]="deviceEntered" [source]="deviceNames">
+                        </p>
+                    </div>
+                    <h4>Please add at least one Sub-Device</h4>
+                    <div class="field">
+                        <label class="label field-label">Subdevice</label>
+                        <p class="control">
+                            <input class="input" name="Subdevice" [(ngModel)]="Subdevice" type="text" placeholder="Sub Device name">
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <section class="column two-thirds configuration-panel optional">
+                <h2>{{projectName}}||{{phase}}||{{mileStone}}||{{device}}</h2><br>
+                <h3>Add a configuration</h3>
+                <div class="field-group long-field-group">
+
+                    <div class="field name">
+                        <label class="label field-label">name</label>
+                        <p class="control">
+                            <input class="input" name="ConfigurationName" ngModel type="text" placeholder="Name of Configuration">
+                        </p>
+                    </div>
+                    <div class="field string">
+                        <label class="label field-label">components</label>
+                        <p class="control">
+                            <input class="input" name="components" ngModel type="text" placeholder="List Components">
+                        </p>
+                    </div>
+                    <div class="field integer">
+                        <label class="label field-label">units</label>
+                        <p class="control">
+                            <input class="input" name="ApprovedQty" min="0" max="100" type="number" placeholder="0" ngModel>
+                        </p>
+                    </div>
+                    <!--<div class="field name">
+                        <label class="label field-label">subsystem</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Subsystem">
+                        </p>
+                    </div>-->
+                    <div class="field name">
+                        <label class="label field-label">assign to</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Assigned to" disabled>
+                        </p>
+                    </div>
+                    <div class="field string">
+                        <label class="label field-label">test team</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Assign Test Team" disabled>
+                        </p>
+                    </div>
+                    <div class="field string">
+                        <label class="label field-label">location</label>
+                        <p class="control">
+                            <input class="input" type="text" placeholder="Shipping location" disabled>
+                        </p>
+                    </div>
+                    <div class="field integer">
+                        <label class="label field-label">priority</label>
+                        <p class="control">
+                            <input class="input" name="units" min="0" max="10" type="number" placeholder="0" disabled>
+                        </p>
+                    </div>
+                    <div class="field date">
+                        <label class="label field-label">Target Date</label>
+                        <p class="control">
+                            <my-date-picker name="TargetDate" [options]="myDatePickerOptions" [(ngModel)]="model1" required></my-date-picker>
+                        </p>
+                    </div>
+                    <div class="field date">
+                        <label class="label field-label">shipped date</label>
+                        <p class="control">
+                            <my-date-picker name="ShippedDate" [options]="myDatePickerOptions" [(ngModel)]="model" required></my-date-picker>
+                        </p>
+                    </div>
+                    <div class="field string">
+                        <label class="label field-label">provisioned</label>
+                        <p class="control">
+                            <input class="input" type="boolean" name="Provisioned" placeholder="Yes/No" ngModel>
+                        </p>
+                    </div>
+                    <div class="field date">
+                        <label class="label field-label">smoke test</label>
+                        <p class="control">
+                            <input class="input" name="SmokeTest" type="text" placeholder="Details" ngModel>
+                        </p>
+                    </div>
+
+                </div>
+                <div class="field text-area">
+                    <label class="label">comment</label>
+                    <p class="control">
+                        <textarea class="textarea" name="Remark" placeholder="Add a comment"></textarea>
+                    </p>
+                </div>
+            </section>
+
+            <section class="column full-width task-footer">
+                <div class="nav-right">
+                    <div class="is-block">
+                        <button class="button save" type="submit"><span class="icon icon-save"></span></button>
+                        <a class="button cancel"><span class="icon icon-cancel"></span></a>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </form>
+</main>
+<div [class.noDisplay]=bool class="fullDisplay">
+    <figure>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </figure>
+</div>

@@ -1,0 +1,252 @@
+/*Layout basics*/
+
+html {
+    @include html-defaults;
+    background-color: $background;
+    font-size: $html-default;
+}
+
+.screen-title {
+    @include body-elements;
+    h1 {
+        color: $neutral01;
+        margin: .5rem 0 1rem;
+    }
+}
+
+.phase-view,
+.milestone-nav {
+    background: $phase-background;
+}
+
+.milestone-view {
+    background: $milestone-background;
+}
+
+main {
+    @include body-elements;
+}
+
+.project-view {
+    .columns {margin:0;}
+    .phase {
+        .milestone-view.columns {
+            .milestone-nav {
+                @include flex-column;
+                padding:0;
+                justify-content: space-between;
+            }
+        } 
+    }
+}
+
+.phase-view {
+    .phase-view-title {
+        @include flex-row-nowrap;
+        justify-content: flex-start;
+        padding: 10px $generous-space;
+        align-content: center;
+        p {
+            color: $neutral01;
+            display: block;
+        }
+    }
+}
+
+.device-view {
+    margin: $default-space $default-space $default-space 0;
+    background-color: $neutral02;
+    padding: $comfortable-space;
+    .header {
+        @include flex-row-nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: $default-space;
+        h2 {flex: 1 0 auto;}
+        .btn-group {
+            @include flex-row-nowrap;
+            justify-content: flex-end;
+            flex: 0 1 auto;
+        }
+    }
+}
+
+.onboard-first {
+    @include flex-column;
+    height: 88vh;
+    justify-content: center;
+    .notification {
+        margin: 0 auto;
+        text-align: center;
+        &.clean {
+            @include div-reset;
+            p, h1 {color: $neutral01;}
+        }
+    }
+}
+
+/*Ribbon*/
+
+.nav {
+    .nav-menu {
+        p {
+            color: $neutral01;
+            .icon {
+                color: $neutral01;
+                &:first-child {padding-right: $default-space;}
+            }
+        }
+    }
+}
+
+.ribbon,
+.ribbon.nav {
+    @include ribbon;
+    box-shadow: $ribbon-shadow;
+    h2, h3, h4 {
+        color: $neutral01;
+        align-self: center;
+    }
+    .nav-right.with-drop-down {
+        overflow:visible;
+    }
+}
+
+/*DOM containers*/
+
+.phase-view {
+    .phase {
+        padding: 0 $generous-space $generous-space;
+        .milestone-view {
+            /*padding: 0 $generous-space $generous-space;*/
+        }
+    }
+}
+
+/*Task Panels*/
+
+.task-panel {
+    @include flex-row-wrap;
+    justify-content: space-between;
+    .configuration-panel {background-color: $neutral06;}
+}
+
+.task-view {
+    margin-top: 2em;
+    &~.screen-title {
+        margin-top: 0;
+    }
+    .task-panel {
+        background-color: $neutral03;
+        .configuration-panel {background-color: $neutral02;}
+    }
+    .column {
+        &.third {
+            @include one-third-flex;
+        }
+        &.two-thirds {
+            @include two-thirds-flex;
+        }
+        &.full-width {
+            @include full-width-tile;
+        }
+        &.required {
+            padding: $generous-space 0 0 $generous-space;
+        }
+        &.optional {
+            padding: $generous-space;
+        }
+    }
+    .long-field-group {
+        @include flex-row-wrap;
+        justify-content: flex-start;
+        .field {
+            margin-right: $default-space;
+            &:not(:last-child) {
+                margin-bottom: $generous-space;
+            }
+        }
+        .string {@include auto-width-flex;}
+        .integer {@include one-eighth-flex;}
+        .name {@include one-third-flex;}
+        .date {@include one-fifth-flex;}
+        .text-area {@include full-width-tile;}
+        .checkbox {@include one-eighth-flex;}
+        .radio {@include one-eighth-flex;}
+    }
+}
+
+/*Accordions*/
+
+.device-nav {
+    @include flex-column;
+    justify-content: space-between;
+    margin: $default-space 0 $default-space $default-space;
+    background-color: $neutral07;
+    padding-right: 3px;
+}
+.device-accordion {
+    @include hide-checkbox;
+    margin-bottom: $thin-space;
+    .accordion-panel {
+        &:not(:last-child) {margin-bottom: $thin-space;}
+    }
+    .accordion-panel .accessories-list {
+        @include accordion-animate-in;
+        @include flex-column;
+        background-color: $neutral04;
+        margin: 0 $accordion-label-mr 0 0;
+    }
+    .accordion-panel input:checked ~ .accessories-list {
+        @include accordion-animate-out;
+    }
+}
+
+.configuration-accordion {
+    .accordion-panel {
+        @include hide-checkbox;
+        &:not(:last-child) {margin-bottom: $hair-space;}
+        .configuration-label {
+            background-color: $neutral07;
+            height: $accordion-label;
+            padding: $short-space;
+            @include flex-row-nowrap;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: $button-in-transition;
+            h4 {
+                color: $neutral03;
+                flex: 1 0 auto;
+            }
+            .label-value {
+                @include label-value-div;
+                @include flex-row-nowrap;
+                flex: 1 0 auto;
+                align-items: center;
+                .label {
+                    margin: 0 $short-space 0 0;
+                    color: $neutral05;
+                }
+                .value {
+                    color: $neutral03;
+                }
+            }
+            &:hover,
+            &:focus {
+                background-color: $neutral08;
+                transition: $button-out-transition;
+            }
+        }  
+    }
+}
+
+
+.accordion-panel input:checked ~ .accessories-list.short{
+	height: 144px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+.accordion-panel input:checked ~ .accessories-list.long{
+	height: 6em;
+}

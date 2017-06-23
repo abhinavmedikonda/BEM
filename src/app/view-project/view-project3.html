@@ -1,0 +1,333 @@
+<!--<header class="screen-title">
+    <h1>Project Name</h1>
+</header>-->
+<div>
+    <nav class="nav">
+        <div class="nav-item">
+            <div class="field is-grouped">
+                <p class="control" *ngFor="let project of _mapProjectData1">
+                    <a class="button is-success" color="green">
+                        <span><a #f (click)="getProjectDetails(f,$event)">{{project.Name}}</a></span>
+
+                    </a>
+                    <a #f (click)='deleteProject(f)' [attr.data]="project.Name" class="delete"></a>
+                </p>
+
+            </div>
+        </div>
+
+    </nav>
+    <main class="project-view phase-view">
+        <header class="phase-view-title">
+            <div class="icon-toolbar">
+                <a href="#" class="icon-btn icon-edit" title="edit project" disabled></a>
+                <a href="#" class="icon-btn icon-trash-open" title="delete project" disabled></a>
+            </div>
+            <p class="summary">A brief summary describing the project here.</p>
+        </header>
+        <section class="phase">
+            <nav class="phase-selector tabs" *ngFor="let phases of _mapPhaseData">
+                <ul>
+                    <li class="tab-btn is-active">
+                        <a class="phase-name" #f (click)="getPhaseData(f)" href="#">{{phases.Name}}</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="tab-btn">
+                        <a class="phase-name" href="#">Phase 02</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="tab-btn">
+                        <a class="phase-name" href="#">Phase 03</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="add-tab"><a class="button add"><span class="icon icon-add"></span></a></li>
+                </ul>
+            </nav>
+            <section class="milestone-view columns">
+                <div class="column is-2 milestone-nav">
+                    <div class="milestone-btn-group">
+                        <div class="milestone-tab selected" *ngFor="let milesstone of _mapMilestoneData">
+                            <a href="#">{{milesstone.Name}}</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+
+                        <div class="milestone-tab">
+                            <a href="#">Milestone02</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+
+                        <div class="milestone-tab">
+                            <a href="#">Milestone03</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+
+                        <div class="milestone-tab">
+                            <a href="#">Milestone04</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button add" disabled>
+                        <span class="icon icon-add"></span>
+                    </a>
+                </div>
+                <div class="column is-2 device-nav">
+                    <section class="accordion device-accordion">
+                        <div class="accordion-panel" *ngFor="let devices of _mapDeviceData">
+                            <input id="device01" name="device01" type="checkbox">
+                            <label for="device01" class="with-accessories">
+                                <h4 class="accordion-label">{{devices.Name}}</h4>
+                                <div class="accessories-indicator">
+                                    <p class="device-count">4</p>
+                                    <span class="icon icon-sm icon-drop-down"></span>
+                                </div>
+                                <div class="triangle-right"></div>
+                            </label>
+                            <article class="accessories-list short">
+                                <a href="#" class="button accordion-btn">Accessory0101</a>
+                                <a href="#" class="button accordion-btn">Accessory0102</a>
+                                <a href="#" class="button accordion-btn">Accessory0103</a>
+                                <a href="#" class="button accordion-btn">Accessory0104</a>
+                                <a href="#" class="button add"><span class="icon icon-add"></span></a>
+                            </article>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device02" name="device02" type="checkbox">
+                            <label for="device02" class="device-only">
+                                <h4 class="accordion-label">Device02</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device03" name="device03" type="checkbox">
+                            <label for="device03" class="device-only">
+                                <h4 class="accordion-label">Device03</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device04" name="device04" type="checkbox">
+                            <label for="device04" class="device-only">
+                                <h4 class="accordion-label">Device04</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device05" name="device05" type="checkbox">
+                            <label for="device05" class="with-accessories">
+                                <h4 class="accordion-label">Device05</h4>
+                                <div class="accessories-indicator">
+                                    <p class="device-count">7</p>
+                                    <span class="icon icon-sm icon-drop-down"></span>
+                                </div>
+                                <div class="triangle-right"></div>
+                            </label>
+                            <article class="accessories-list short">
+                                <a href="#" class="button accordion-btn">Accessory0501</a>
+                                <a href="#" class="button accordion-btn">Accessory0502</a>
+                                <a href="#" class="button accordion-btn">Accessory0503</a>
+                                <a href="#" class="button accordion-btn">Accessory0504</a>
+                                <a href="#" class="button accordion-btn">Accessory0505</a>
+                                <a href="#" class="button accordion-btn">Accessory0506</a>
+                                <a href="#" class="button accordion-btn">Accessory0507</a>
+                                <a href="#" class="button add"><span class="icon icon-add"></span></a>
+                            </article>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device06" name="device06" type="checkbox">
+                            <label for="device06" class="device-only">
+                                <h4 class="accordion-label">Device06</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device07" name="device07" type="checkbox">
+                            <label for="device07" class="device-only">
+                                <h4 class="accordion-label">Device07</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                    </section>
+                    <a class="button add"><span class="icon icon-add"></span></a>
+                </div>
+                <div class="column device-view">
+                    <nav class="header">
+                        <h2>Device01</h2>
+                        <div class="btn-group">
+                            <a href="#" class="button add"><span class="icon icon-sm icon-add"></span> Add Accessory</a>
+                            <a href="#" class="button add"><span class="icon icon-sm icon-add"></span> Add Configuration</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-md icon-edit" title="edit project"></a>
+                                <a href="#" class="icon-btn icon-md icon-trash-open" title="delete project" disabled></a>
+                            </div>
+                        </div>
+                    </nav>
+
+                    <section class="configuration-accordion">
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel" *ngFor="let config of _mapConfigurationData">
+                            <input id="d01c01" name="d01c01" type="checkbox">
+                            <label for="d01c01" class="configuration-label">
+                                <h4>Configuration01</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">{{config.ApprovedQty}}</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">
+                                        {{config.TargetDate}}
+                                    </p>
+                                </div>
+                                <div class="icon-toolbar">
+                                    <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                    <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                                </div>
+                            </label>
+                            <article class="accordion-body configuration-detail" *ngFor="let config of _mapConfigurationData">
+                                <div class="meta-data-group">
+                                    <div class="label-value string">
+                                        <p class="label">Name</p>
+                                        <p class="value"> {{config.Name}}</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Assigned to</p>
+                                        <p class="value">Tester-name-last-name-birthdate-dogs-name-dentists-name-car-model</p>
+                                    </div>
+                                    <div class="label-value date">
+                                        <p class="label">Shipped Date</p>
+                                        <p class="value">
+                                            {{config.ShippedDate}}
+                                        </p>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Priority</p>
+                                        <p class="value">{{config.ApprovedQty}}</p>
+                                    </div>
+                                    <!--<div class="label-value string">
+                                        <p class="label">Subsystem</p>
+                                        <p class="value">Subsystem-long-name-put-lots-of-miscellaneous-data-in-here-but-it-will-be-truncated</p>
+                                    </div>
+                                    <div class="label-value accordion">
+                                        <p class="label">Requested Units</p>
+                                        <div class="tree-expander">
+                                            <h3>An expanding view of test teams and requested units for each here.</h3>
+                                        </div>
+                                    </div>-->
+                                    <div class="label-value integer">
+                                        <p class="label">Shipped Units</p>
+                                        <p class="value">{{config.ApprovedQty}}</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Ship Destination</p>
+                                        <p class="value">{{config.TargetDate}}|| {{config.ShippedDate}}</p>
+                                    </div>
+                                    <div class="label-value checkbox">
+                                        <input id="provisioned-boole" name="provisioned-boole" type="checkbox" disabled>
+                                        <label for="provisioned-boole" class="label"><span class="icon icon-sm icon-checked"></span>Provisioned</label>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Smoke Test</p>
+                                        <p class="value">{{config.SmokeTest}}</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Components</p>
+                                        <p class="value"> {{config.Components}}</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Notes</p>
+                                        <p class="value">{{config.Remark}}</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel">
+                            <input id="d01c02" name="d01c02" type="checkbox">
+                            <label for="d01c02" class="configuration-label">
+                                <h4>Configuration02</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">21</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">07/06/17</p>
+                                </div>
+                                <div class="icon-toolbar">
+                                    <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                    <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                                </div>
+                            </label>
+                        </div>
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel">
+                            <input id="d01c03" name="d01c03" type="checkbox">
+                            <label for="d01c03" class="configuration-label">
+                                <h4>Configuration03</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">39</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">07/06/17</p>
+                                </div>
+                                <div class="icon-toolbar">
+                                    <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                    <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                                </div>
+                            </label>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>
+    <router-outlet></router-outlet>
+
+    <div class="modal is-active" [class.is-active]="activeModal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Delete Peoject</p>
+                <button class="delete" (click)="deleteCancelClicked()"></button>
+            </header>
+            <section class="modal-card-body">
+                Are you Sure you want to Delete Project {{projectName.name}}?
+            </section>
+            <footer class="modal-card-foot">
+                <a class="button is-success " (click)="deleteYesClicked()">Continue</a>
+                <a class="button" (click)="deleteCancelClicked()">Cancel</a>
+            </footer>
+        </div>
+    </div>

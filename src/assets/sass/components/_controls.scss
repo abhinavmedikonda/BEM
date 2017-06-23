@@ -1,0 +1,569 @@
+/*Controls, menus, inputs, buttons*/
+
+/*Mixins*/
+/* Added to Mixins partial */
+
+/*Buttons and anchors*/
+
+.button {
+    @include button-basics;
+    &.save {
+        background-color: $accent05;
+    }
+    &.save:hover {
+        background-color: $accent01;
+        color: $neutral01;
+    }
+    &.cancel {
+        background-color: $neutral07;
+    }
+    &.cancel:hover {
+        background-color: $neutral09;
+        color: $neutral01;
+    }
+    &.save,
+    &.cancel {
+        @include rev-text-button;
+    }
+    transition: $button-in-transition;
+    &:hover,
+    &:focus {
+        transition: $button-out-transition;
+    }
+}
+
+.project-view {
+    .button {@include button-basics;}
+}
+
+.icon-btn {
+    transition: $text-in-transition;
+    &:hover {transition: $text-out-transition;}
+}
+
+.button.clean-btn {
+    @include div-reset;
+    &.xlarge {font-size: $xl-icon;}
+    transition: $text-in-transition;
+    &:hover,
+    &:focus {transition: $text-in-transition;}
+}
+
+.anchor-icon {
+    &:first-child {margin-right: 10px;}
+    &:last-child {margin-left: 10px;}
+    &.xs-icon {
+        font-size: $xs-icon;
+        line-height: 1;
+    }
+}
+
+.add-btn,
+.button.add {
+    @include add-button;
+}
+
+.device-view {
+    .header {
+        .btn-group {
+            & > *:not(:first-child) {
+            margin-left: $short-space;
+            }
+        }
+        .button.add {
+            @include add-button-device;
+        }
+        .icon-btn {
+            color: $accent01;
+            padding-top: 2px;
+            &:hover,
+            &:focus {
+                color: $neutral09;
+            }
+        } 
+    }
+}
+
+/*Dropdown menu*/
+
+.drop-down {
+    @include ul-default;
+    @include flex-row-nowrap;
+    position: relative;
+    li {
+        @include flex-row-nowrap;
+        align-items: center;
+        padding: 0 1.1em;
+        &:hover {
+            a {
+                transition: $text-out-transition;
+                .anchor-icon {
+                    color: $neutral01;
+                    transition: $text-out-transition;
+                    }
+            }  
+        }
+        a {
+            color: $neutral01;
+            transition: $text-in-transition;
+            text-align: left;
+            .anchor-icon {transition: $text-in-transition;}
+        }
+        .anchor-icon {color: $accent06;}
+        .drop-down-content {
+            position: absolute;
+            display: none;
+            background-color: $neutral01;
+            box-shadow: $dropdown-shadow;
+            z-index: 4;
+            min-width: 3rem;
+            li {
+                a {
+                    display: block;
+                    color: $neutral09;
+                    padding: 6px 8px;
+                } 
+                &:hover {
+                    a {
+                        color: $accent01;
+                    }
+                }
+            }
+        }
+    }
+    li:hover {
+        .drop-down-content {
+            display: block;
+            top: $ribbon-height;
+        }
+    }
+}
+
+/*Icon toolbar*/
+
+.icon-toolbar {
+    @include flex-row-nowrap;
+    &:first-child {margin-right: $default-space;}
+    .icon-btn {
+        line-height: $icon-line-height;
+        padding-left: $default-space;
+        color: $neutral05;
+        &:first-child {padding-left: 0;}
+        &:hover {color: $neutral01;}
+    }
+}
+
+/*Tabs navigation*/
+
+.phase-selector.tabs {
+    ul {
+        @include phase-tabs-border;
+            .phase-name {
+                color: $neutral04;
+                border: none;
+                padding: 0.5em 1em 0.5em 0;
+                flex: 1 0 auto;
+                }
+            .icon-btn-sm {
+                    @include small-icon;
+                    border: none;
+                }
+        .icon-toolbar {
+            margin: 0;
+            padding: 0;
+            border: none;
+            .icon-btn {
+                color: $neutral04;
+                &:hover {color: $neutral01;}
+                }
+            .icon-btn-sm:not(:first-child) {
+                padding-left: $default-space;
+                }
+            }
+        }
+    ul > .tab-btn {
+        @include flex-row-nowrap;
+        @include phase-tabs-border;
+        margin-right: $generous-space;
+        margin-bottom: -$default-space;
+        .phase-name {
+            color: $neutral04;
+            transition: $text-in-transition;
+            }
+        &:hover,
+        &:focus {
+            .phase-name {
+                color: $neutral01;
+                transition: $text-out-transition;
+                }
+            }
+        .icon-toolbar {display: none;}
+        }
+    ul > .tab-btn.is-active {
+        .phase-name {
+            border: none;
+            color: $neutral01;
+        }
+        border-color: $accent06;
+        .icon-toolbar {display: flex;}
+        }
+    
+    .button {
+        @include add-button-phase;
+    }
+}
+
+/*Vertical button stacks*/
+
+.milestone-nav {
+    @include flex-column;
+    justify-content: space-between;
+    .milestone-btn-group {
+        margin-bottom: 1px;
+        .milestone-tab {
+            @include vertical-column-button;
+            justify-content: flex-start;
+            color: $neutral04;
+            background: $neutral07;
+            .icon-btn {
+                color: $neutral08;
+                &:hover,
+                &:focus {color: $accent00;}
+                }
+            }
+        .milestone-tab:not(.selected) {
+            a {
+                color: $neutral04;
+                transition: $text-in-transition;
+                &:hover,
+                &:focus {
+                    transition: $text-out-transition;
+                    color: $neutral01;
+                    }
+                }
+            .icon-toolbar {display: none;}
+            }
+        .milestone-tab.selected {
+            border-right-width: 0;
+            color: $neutral01;
+            background-color: $neutral05;
+            &>a{
+                font-size: $h3-default;
+                color: $neutral01;
+                }
+            }
+        }
+    .button.add {
+        @include vertical-column-button;
+        @include add-button-phase;
+        
+    }
+}
+
+/*Accordion nav*/
+
+.device-nav {
+    .button.add {
+        background-color: $neutral06;
+        color: $neutral04;
+        &:hover,
+        &:focus {
+            background-color: $accent05;
+            color: $neutral01;
+        }
+    }
+    .device-accordion + .button.add {margin-right: $accordion-label-mr;}
+    .accordion-panel {
+        .button.accordion-btn {
+            @include label;
+            background-color: $neutral02;
+            color: $neutral09;
+            display: block;
+            height: auto;
+            &:first-child {margin-top: $thin-space;}
+            &:not(:last-child) {margin-bottom: $thin-space;}
+            &:hover,
+            &:focus {
+                color: $accent01;
+                background-color: $neutral01;
+            }
+        }
+        .button {
+            margin-left: $thin-space;
+            margin-right: $thin-space;
+            &:last-child {
+                margin-bottom: $thin-space;
+                min-height: $add-btn-min;
+            }
+        }
+    }
+    label {
+        @include flex-row-nowrap;
+        justify-content: space-between;
+        position: relative;
+        z-index: 20;
+        cursor: pointer;
+        height: 40px;
+        margin-right: $accordion-label-mr;
+        transition: $accordion-margin-in, flex $transition-in;
+        .accordion-label {
+            @include label-style;
+            height: 100%;
+            background-color: $neutral04;
+            transition: $button-in-transition, flex $transition-in;
+        }
+        .triangle-right {
+            flex: 0 0 auto;
+            transition: border-left-color $transition-in, border-left-width $transition-in, flex $transition-in;
+        }
+        .accessories-indicator {
+            height: 100%;
+            padding: 0 8px 0 4px;
+            transition: background-color $transition-in, flex $transition-in;
+        }
+        &.with-accessories {
+            .accessories-indicator {
+                @include flex-vertical-jsa;
+                flex: 1 1 15px;
+                align-items: center;
+                background-color: $neutral08;
+            }
+            .icon.icon-sm {
+                min-width: $generous-space;
+                min-height: $default-space;
+                width: $generous-space;
+                height: $default-space;
+                color: $neutral05;
+                transition: $text-in-transition;
+            }
+            .device-count {
+                @include centered-label;
+                color: $neutral04;
+                transition: $text-in-transition;
+            }
+            .triangle-right {
+                @include triangle-right;
+                border-left-color: $neutral09;
+                border-left-width: 0;
+            }
+        }
+        &.device-only {
+            .accessories-indicator {display: none;}
+            .triangle-right {
+                @include triangle-right;
+                border-left-color: $neutral04;
+                border-left-width: 0;
+            }
+        }
+        &:hover,
+        &:focus {
+            .accordion-label {
+                background-color: $neutral03;
+                color: $neutral09;
+                transition: $button-out-transition;
+            }
+            .accessories-indicator {
+                background-color: $neutral08;
+                transition: $button-out-transition;
+                .device-count,
+                .icon {
+                    color: $neutral01;
+                    transition: $text-out-transition;
+                    }
+            }
+            &.with-accessories {}
+            &.device-only {}
+        }
+    }
+    .accordion-panel input:checked ~ label {
+        .triangle-right {
+            transition: border-left-color $transition-out, border-left-width $transition-out, flex $transition-out;
+        }
+    }
+    .accordion-panel input:checked ~ label.with-accessories {
+        margin-right: 0;
+        transition: $accordion-margin-out, flex $transition-out;
+        .accordion-label {
+            background-color: $neutral01;
+            color: $accent01;
+        }
+        .accessories-indicator {
+            background-color: $accent02;
+            transition: background-color $transition-out, flex $transition-out;
+            .device-count,
+            .icon {
+                color: $neutral01;
+            }
+        }
+        .triangle-right {
+            @include triangle-right;
+            border-left-color: $accent02;
+        }
+    }
+    .accordion-panel input:checked ~ label.device-only {
+        margin-right: 0;
+        transition: $accordion-margin-out, flex $transition-out;
+        .accordion-label {
+            background-color: $neutral01;
+            color: $accent01;
+        }
+        .triangle-right {
+            @include triangle-right;
+            border-left-color: $neutral01;
+        }
+    }
+}
+
+/*Onboarding Panel*/
+
+.onboard-first {
+    .xlarge.clean-btn {
+        color: $accent06;
+        &:hover,
+        &:focus {color: $neutral01;}
+        }
+}
+
+.onboarding-notification {}
+
+/*Inputs and Fields*/
+
+.task-panel {
+    .field {
+        .field-label {
+            @include label;
+        }
+    }
+    .input,
+    input,
+    .textarea,
+    textarea {
+        @include input-text-default;
+        @include standard-input;
+    }
+}
+
+.field-group {
+    margin-bottom: $default-space * 1.8;
+    &:last-child {margin-bottom: 0;}
+}
+
+.field {
+    &.large-clean-input {
+        .input.is-large {
+            @include clean-input;
+            background-color: transparent;
+            font-size: $h2-default;
+            height: auto;
+            padding: 0;
+            margin: 0;
+            border-color: none;
+        }
+    }
+}
+
+.large-clean-input {
+    @include div-reset;
+}
+
+.field-label {
+    @include label;
+}
+
+.task-footer {
+    .button {
+        @include button-basics;
+        border: none;
+        font-size: $h4-default;
+    }
+    .is-block {
+        .button:not(:first-child) {margin-left: $short-space;}
+    }
+}
+
+
+/*===========Custom checkbox and radio buttons==========*/
+
+/* Hiding default checkbox and Radio button design */
+input[type=checkbox],input[type=radio] {
+    opacity: 0;
+    position: absolute;
+    z-index: 12;
+    width: 18px;
+    height: 18px;
+}
+
+/* Disable outline when clicked*/
+input[type=checkbox]:checked,input[type=radio]:checked,input[type=checkbox]:focus,input[type=radio]:focus {
+    outline: none !important;
+}
+
+input[type=checkbox]+.lbl,input[type=radio]+.lbl {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    line-height: 20px;
+    min-height: 14px;
+    min-width: 14px;
+    font-weight: normal;
+}
+
+/* Basic Checkbox styles */
+input[type=checkbox]+.lbl::before,input[type=radio]+.lbl::before {
+  font-family: 'dcm-icons';
+  font-weight: normal;
+  font-size: 11px;
+  color: #2091cf;
+  content: "\e911";
+  background-color: #FAFAFA;
+  border: 1px solid #CCC;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  height: 13px;
+  line-height: 13px;
+  min-width: 13px;
+  margin-right: 1px;
+  margin-top: -5px;
+}
+
+/* Checked state styles */
+input[type=checkbox]:checked+.lbl::before,input[type=radio]:checked+.lbl::before {
+  display: inline-block;
+  content: '\e903';
+  background-color: #F5F8FC;
+  border-color: #adb8c0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover state styles */
+input[type=checkbox]:hover+.lbl::before,input[type=radio]:hover+.lbl::before,input[type=checkbox]+.lbl:hover::before,input[type=radio]+.lbl:hover::before {
+  border-color: #1c7aad;
+}
+
+/* Shadow when checked or Active */
+input[type=checkbox]:active+.lbl::before,input[type=radio]:active+.lbl::before,input[type=checkbox]:checked:active+.lbl::before,input[type=radio]:checked:active+.lbl::before {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled state styles */
+input[type=checkbox]:disabled+.lbl::before,input[type=radio]:disabled+.lbl::before,input[type=checkbox][disabled]+.lbl::before,input[type=radio][disabled]+.lbl::before,input[type=checkbox].disabled+.lbl::before,input[type=radio].disabled+.lbl::before {
+  background-color: #DDD !important;
+  border-color: #CCC !important;
+  box-shadow: none !important;
+  color: #BBB;
+}
+
+/* Styles for Radio button */
+input[type=radio]+.lbl::before {
+  border-radius: 32px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 36px;
+}
+
+input[type=radio]:checked+.lbl::before {
+  content: "\e903";
+}

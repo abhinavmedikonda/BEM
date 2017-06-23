@@ -1,0 +1,9 @@
+/*Compile all SASS partials into one*/
+
+@import "components/_standards";
+@import "components/_theme";
+@import "components/_typography";
+@import "components/_mixins";
+@import "components/_controls";
+@import "components/_bulma";
+@import "components/_layout";

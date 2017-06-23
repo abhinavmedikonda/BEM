@@ -1,0 +1,286 @@
+/*Mixins*/
+
+@mixin ribbon {
+    background-color: $ribbon-background;
+    height: $ribbon-height;
+    padding: 0 2rem;
+}
+
+@mixin body-elements {
+    width: 90vw;
+    margin: 0 auto;
+}
+
+
+@mixin outline-override {
+    outline: none;
+}
+
+@mixin grid-margin-override {
+    margin: 0;
+}
+
+@mixin label-style {
+    @include body-text;
+    font-size: $h5-default;
+    flex: 1 0 auto;
+    align-self: center;
+    padding: $short-space;
+}
+
+@mixin label-value-div {
+    .label {@include label;}
+    .value {@include value;}
+}
+
+/*Flexbox*/
+
+@mixin display-flex {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+@mixin flex-row {
+    @include display-flex;
+    flex-direction: row;
+}
+
+@mixin flex-row-wrap {
+    @include display-flex;
+    flex-flow: row wrap;
+}
+
+@mixin flex-row-nowrap {
+    @include display-flex;
+    flex-flow: row nowrap;
+}
+
+@mixin flex-column {
+    @include display-flex;
+    flex-flow: column nowrap;
+}
+
+@mixin flex-column-wrap {
+    @include display-flex;
+    flex-flow: column wrap;
+}
+
+@mixin keep-columns {
+	display: inline-block;
+	width: 100%;
+}
+
+@mixin flex-vertical-jsa {
+    @include flex-column;
+    justify-content: space-around;
+}
+
+/*Columns and grids*/
+
+@mixin auto-width-flex {
+    flex: 1 0 auto;
+}
+@mixin full-width-tile {
+	flex: 1 0 100%;
+}
+
+@mixin one-eighth-flex {
+    flex: 0 1 calc(12.5% - .2em);
+}
+
+@mixin one-sixth-flex {
+    flex: 0 1 calc(15% - .2em);
+}
+
+@mixin one-fifth-flex {
+    flex: 0 1 calc(20% - .2em);
+}
+
+@mixin one-quarter-flex {
+    flex: 0 1 calc(25% - .2em);
+}
+
+@mixin one-third-flex {
+    flex: 0 1 calc(33% - .2em);
+}
+
+@mixin two-thirds-flex {
+    flex: 0 1 calc(66% - .2em);
+}
+
+@mixin half-flex {
+    flex: 0 1 calc(50% - .2em);
+}
+
+/*List mixins*/
+
+@mixin ul-default {
+    margin: 0;
+}
+
+@mixin div-reset {
+    background-color: transparent;
+    border: 0;
+    border-radius: 0;
+    border-color: transparent;
+}
+
+/*Control mixins*/
+
+@mixin button-basics {
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    &:hover,
+    &:focus {border: none;}
+}
+
+@mixin button-sm {
+    font-size: $font-size;
+    padding: $button-sm-padding;
+    height: 1.6em;
+}
+@mixin button-md {
+    font-size: $font-size-default;
+    padding: $button-md-padding;
+    height: 2em;
+}
+@mixin button-lg {}
+
+@mixin phase-tabs-border {
+    border-bottom: $default-space solid $phase-background;
+}
+
+@mixin small-icon {
+    padding: 0;
+}
+
+@mixin add-button {
+    @include button-basics;
+    @include button-md;   
+}
+
+@mixin add-button-phase {
+    @include add-button;
+    color: $neutral04;
+    background-color: $neutral05;
+    border-right: $milestone-btn-normal;
+    &:hover,
+    &:focus {
+        color: $neutral01;
+        background-color: $accent05;
+        border-right: $milestone-btn-normal;
+    }
+}
+
+@mixin add-button-device {
+    @include label;
+    padding: $icon-text-btn-padding;
+    display: inline-flex;
+    background-color: $accent00;
+    color: $neutral01;
+    height: $icon-width-height;
+    &:hover,
+    &:focus {background-color: $neutral09;}
+    .icon {margin: 0 4px;}
+}
+
+@mixin input-reset {
+    border-radius: 0;
+    box-shadow: none;
+    transition: $border-in-transition;
+    &:hover,
+    &:focus {
+        transition: $border-out-transition;
+    }
+    
+}
+
+@mixin standard-input {
+    @include input-reset;
+    border: 1px solid $neutral04;
+    background-color: transparent;
+    &:hover,
+    &:focus,
+    &:active {border-color: $neutral07;}
+}
+
+@mixin clean-input {
+    @include input-reset;
+    border-width: 0 0 1px 0;
+    border-style: none none solid none;
+    border-bottom-color: $neutral04;
+    &:hover,
+    &:focus,
+    &:active {border-bottom-color: $neutral07;}
+}
+
+@mixin rev-text-button {
+    color: $semi-opaque;
+}
+
+@mixin vertical-column-button {
+    width: 100%;
+    height: auto;
+    padding: $default-space;
+}
+
+@mixin hide-checkbox {
+    input[type="checkbox"] {display:none;}
+}
+
+@mixin hide-radio {
+    input[type="radio"] {display:none;}
+}
+
+/*Accordion animations*/
+
+
+@mixin accordion-animate-in {
+	overflow: hidden;
+	height: 0px;
+	position: relative;
+	z-index: 10;
+    -webkit-transition: $open-accordion-panel;
+    -moz-transition: $open-accordion-panel;
+    -o-transition: $open-accordion-panel;
+    -ms-transition: $open-accordion-panel;
+    transition: $open-accordion-panel;
+}
+
+@mixin accordion-animate-out {
+    -webkit-transition: $close-accordion-panel;
+    -moz-transition: $close-accordion-panel;
+    -o-transition: $close-accordion-panel;
+    -ms-transition: $close-accordion-panel;
+    transition: $close-accordion-panel;
+}
+
+/*Shapes*/
+
+@mixin triangle-right { 
+    width: 0; 
+    height: 0;
+    border-top-style: solid;
+    border-top-width: 20px;
+    border-top-color: transparent;
+    border-bottom-style: solid;
+    border-bottom-width: 20px;
+    border-bottom-color: transparent;
+    border-left-width: $accordion-label-mr;
+    border-left-style: solid;
+}
+
+@mixin triangle-right-disabled {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-left: 0px solid $neutral08;
+    border-bottom: 20px solid transparent;
+}
+
+/*Add panel*/
+/*For adding a resource in any panel*/
+

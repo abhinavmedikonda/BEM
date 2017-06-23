@@ -1,0 +1,84 @@
+<div>
+    <nav class="nav">
+        <div class="nav-item">
+            <div class="field is-grouped">
+                <p class="control" *ngFor="let project of _mapProjectData1">
+                    <a class="button is-outlined">
+                        <span><a #f (click)="getProjectDetails(f,$event)">{{project.Name}}</a></span>
+
+                    </a>
+                    <a #f (click)='deleteProject(f)' [attr.data]="project.Name" class="delete"></a>
+                </p>
+
+            </div>
+        </div>
+
+    </nav>
+
+
+    <div class="Phase" style="width:100%;height:800%;border:1px solid #000;">
+
+        <div>
+            <div class="tabs">
+                <ul>
+                    <li *ngFor="let phases of _mapPhaseData" class="is-active">
+                        <a>
+                            
+                            <span #f (click)="getPhaseData(f)">{{phases.Name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="columns">
+                <div class="column is-narrow-desktop">
+                    <div class="box" style="width:200px" *ngFor="let milesstone of _mapMilestoneData">
+                        <p class="label"> <label class="label" #f (click)="getMilestonData(f)">{{milesstone.Name}}</label></p>
+                    </div>
+                </div>
+                <div class="columns">
+                    <div class="column ">
+                        <div class="box" style="width:180px" *ngFor="let devices of _mapDeviceData">
+                            <p class="label"> <label class="label" #f (click)="getDeviceData(f)">{{devices.Name}}</label>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-three-quarters">
+                    <div class="box" style="height:480px">
+                        <div class="card" *ngFor="let config of _mapConfigurationData">
+                            <header class="card-header">
+                                <p class="card-header-title">
+                                    Configuration Details
+                                </p>
+
+
+                            </header>
+                            <div class="card-content">
+                                <div class="content">
+
+                                    {{config.Units}} {{config.Name}}
+                                </div>
+                                <div class="content">
+
+                                    {{config.Components}}
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <!--<div class="column is-three-quarters">
+                    <div class="box" style="height:480px">
+                        <div class="card" *ngFor="let config of _mapConfigurations">
+                            <pre>
+                           {{config| json}}
+                           </pre>
+                        </div>
+
+                    </div>
+                </div>
+            </div>-->
+
+            <router-outlet></router-outlet>

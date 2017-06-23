@@ -1,0 +1,21 @@
+<nav class="nav ribbon">
+    <div class="nav-left">
+        <h3 class="product-id" title="Build Execution Manager">Build Execution Manager</h3>
+    </div>
+    <div class="nav-right with-drop-down nav-menu">
+        <ul class="drop-down">
+            <li>
+                <a href="#">Projects<span class="anchor-icon xs-icon icon-drop-down"></span></a>
+                <ul class="drop-down-content">
+                    <li><a href="dcm-project-boilerplate.html">Provisioned Project</a></li>
+                    <li *ngFor="let project of _mapProjectData1"><a href='/view-project'>{{project.Name}}</a></li>
+                    <li><a href='/add-project'>Onboarding</a></li>
+                </ul>
+            </li>
+
+            <li><p><span class="icon icon-user-outlined"></span>BuildPM</p></li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
