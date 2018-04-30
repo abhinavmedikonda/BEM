@@ -1,84 +1,223 @@
-<div>
-    <nav class="nav">
-        <div class="nav-item">
-            <div class="field is-grouped">
-                <p class="control" *ngFor="let project of _mapProjectData1">
-                    <a class="button is-outlined">
-                        <span><a #f (click)="getProjectDetails(f,$event)">{{project.Name}}</a></span>
-
-                    </a>
-                    <a #f (click)='deleteProject(f)' [attr.data]="project.Name" class="delete"></a>
-                </p>
-
-            </div>
-        </div>
-
+<header class="screen-title" *ngFor="let project of _project">
+  <h1>{{project.Name}}</h1>
+</header>
+<main class="project-view phase-view">
+  <header class="phase-view-title">
+    <div class="icon-toolbar">
+      <a class="icon-btn icon-edit" title="edit project" disabled></a>
+      <a class="icon-btn icon-trash-open" title="delete project" disabled></a>
+    </div>
+    <p class="summary" *ngFor="let project of _project">{{project.Description}}</p>
+  </header>
+  <section class="phase">
+    <nav class="phase-selector tabs">
+      <p class="label-sc">Phases</p>
+      <ul>
+        <li class="tab-btn" [class.is-active]="phase.Id == _phaseId" *ngFor="let phase of _phases">
+          <a class="phase-name" (click)="_getMilestones(phase.Id)">{{phase.Name}}</a>
+          <div class="icon-toolbar">
+            <a class="icon-btn icon-btn-sm icon-edit" title="Edit Phase" disabled></a>
+            <a class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase" disabled></a>
+          </div>
+        </li>
+        <li class="add-tab"><a [routerLink]="_routeToAddProject(3)" class="button add" [class.disabled]="!_haveAddPermission()"><span class="icon icon-add"></span></a></li>
+      </ul>
     </nav>
-
-
-    <div class="Phase" style="width:100%;height:800%;border:1px solid #000;">
-
-        <div>
-            <div class="tabs">
-                <ul>
-                    <li *ngFor="let phases of _mapPhaseData" class="is-active">
-                        <a>
-                            
-                            <span #f (click)="getPhaseData(f)">{{phases.Name}}</span>
-                        </a>
-                    </li>
-                </ul>
+    <section class="milestone-view columns">
+      <div class="column is-2 milestone-nav">
+        <div class="milestone-btn-group">
+          <p class="label-sc">Milestones</p>
+          <div class="milestone-tab" [class.selected]="milestone.Id == _milestoneId" *ngFor="let milestone of _milestones">
+            <a (click)="_getDevices(milestone.Id)">{{milestone.Name}}</a>
+            <div class="icon-toolbar">
+              <a class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+              <a class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+              <a class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
             </div>
-            <div class="columns">
-                <div class="column is-narrow-desktop">
-                    <div class="box" style="width:200px" *ngFor="let milesstone of _mapMilestoneData">
-                        <p class="label"> <label class="label" #f (click)="getMilestonData(f)">{{milesstone.Name}}</label></p>
-                    </div>
+          </div>
+        </div>
+        <a [routerLink]="_routeToAddProject(4)" class="button add" [class.disabled]="!_haveAddPermission()">
+          <span class="icon icon-add"></span>
+        </a>
+      </div>
+      <div class="column is-2 device-nav">
+        <section class="accordion device-accordion">
+          <p class="label-sc">Devices</p>
+          <div class="accordion-panel" *ngFor="let device of _devices">
+            <input [id]="'device01'+device.Id" name="device01" type="radio" [checked]="device.Id == _deviceId">
+            <label [for]="'device01'+device.Id" [class.with-accessories]="_accessoriesLength[device.Id] > 0" [class.device-only]="_accessoriesLength[device.Id] == 0">
+                  <h4 class="accordion-label" (click)="_getConfigurationsByDevice(device.Id, 'inScreen')">{{device.Name}}</h4>
+                  <div class="accessories-indicator" (click)="_deviceDropDownClick(device.Id)">
+                    <p class="device-count">{{_accessoriesLength[device.Id]}}</p>
+                    <span class="icon icon-sm icon-drop-down"></span>
+                  </div>
+                  <div class="triangle-right"></div>
+                </label>
+            <article class="accessories-list" [class.short]="device.Id == _deviceDropDownClickedId">
+              <a *ngFor="let accessory of _accessories" (click)="_getConfigurationsByAccessory(accessory.Id)" class="button accordion-btn"
+                [class.active]="accessory.Id == _accessoryId">{{accessory.Name}}</a>
+                <a [routerLink]="_routeToAddProject(6)" class="button add" [class.disabled]="!_haveAddPermission()"><span class="icon icon-add"></span></a>
+            </article>
+          </div>
+        </section>
+        <a [routerLink]="_routeToAddProject(5)" class="button add" [class.disabled]="!_haveAddPermission()"><span class="icon icon-add"></span></a>
+      </div>
+      <div class="column device-view">
+        <nav class="header">
+          <h2>{{_deviceName}}</h2>
+          <div class="btn-group">
+            <a [routerLink]="_routeToAddProject(6)" routerLinkActive="active" class="button add" [class.disabled]="!_haveAddPermission()"><span class="icon icon-sm icon-add"></span> Add Accessory</a>
+            <a [routerLink]="_routeToAddProject(7)" routerLinkActive="active" class="button add" [class.disabled]="!_haveAddPermission()"><span class="icon icon-sm icon-add"></span> Add Configuration</a>
+            <div class="icon-toolbar">
+              <a class="icon-btn icon-md icon-edit" title="edit project" disabled></a>
+              <a class="icon-btn icon-md icon-trash-open" title="delete project" disabled></a>
+            </div>
+          </div>
+        </nav>
+        <section class="configuration-accordion">
+          <p class="label-sc">Configurations</p>
+          <div class="accordion-panel" *ngFor="let config of _configurations">
+            <input [id]="'d01c01'+config.Id" name="d01c01" type="radio" hidden [checked]="config.Id == _paramConfigurationId">
+            <label [for]="'d01c01'+config.Id" class="configuration-label">
+                  <h4>{{config.Name}}  ({{config.Id}})</h4>
+                  <div class="label-value">
+                    <p class="label">Units</p>
+                    <p class="value">{{config.StartQty}}</p>
+                  </div>
+                  <div class="label-value">
+                    <p class="label">Target Date</p>
+                    <p class="value">{{config.TargetDate |date}}</p>
+                  </div>
+                  <div class="icon-toolbar">
+                    <a [routerLink]="_editConfiguration(config.Id)" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                    <a class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                  </div>
+                </label>
+            <article class="accordion-body configuration-detail">
+              <div class="meta-data-group">
+                <div class="label-value string">
+                  <p class="label">Name</p>
+                  <p class="value"> {{config.Name}}</p>
                 </div>
-                <div class="columns">
-                    <div class="column ">
-                        <div class="box" style="width:180px" *ngFor="let devices of _mapDeviceData">
-                            <p class="label"> <label class="label" #f (click)="getDeviceData(f)">{{devices.Name}}</label>
-                            </p>
-                        </div>
-                    </div>
+                <div class="label-value string">
+                  <p class="label">Assigned to</p>
+                  <p class="value">Tester-name-last-name-birthdate-dogs-name-dentists-name-car-model</p>
                 </div>
-                <div class="column is-three-quarters">
-                    <div class="box" style="height:480px">
-                        <div class="card" *ngFor="let config of _mapConfigurationData">
-                            <header class="card-header">
-                                <p class="card-header-title">
-                                    Configuration Details
-                                </p>
-
-
-                            </header>
-                            <div class="card-content">
-                                <div class="content">
-
-                                    {{config.Units}} {{config.Name}}
-                                </div>
-                                <div class="content">
-
-                                    {{config.Components}}
-                                </div>
-                            </div>
-
-
-                        </div>
-
-                    </div>
+                <div class="label-value date">
+                  <p class="label">Shipped Date</p>
+                  <p class="value">{{config.ShippedDate |date}}
+                  </p>
                 </div>
-                <!--<div class="column is-three-quarters">
-                    <div class="box" style="height:480px">
-                        <div class="card" *ngFor="let config of _mapConfigurations">
-                            <pre>
-                           {{config| json}}
-                           </pre>
-                        </div>
-
-                    </div>
+                <div class="label-value integer">
+                  <p class="label">Start Qty</p>
+                  <p class="value">{{config.StartQty}}</p>
                 </div>
-            </div>-->
-
-            <router-outlet></router-outlet>
+                <div class="label-value integer">
+                  <p class="label">Yield</p>
+                  <p class="value">{{config.Yield}}</p>
+                </div>
+                <div class="label-value integer">
+                  <p class="label">Net Qty</p>
+                  <p class="value">{{config.NetQty}}</p>
+                </div>
+                <div class="label-value integer">
+                  <p class="label">Requested Qty</p>
+                  <p class="value">{{config.RequestedQty}}</p>
+                </div>
+                <div class="label-value string">
+                  <p class="label">Target date</p>
+                  <p class="value">{{config.TargetDate |date}}</p>
+                </div>
+                <div class="label-value string">
+                  <p class="label">Smoke Test</p>
+                  <p class="value">{{config.SmokeTest }}</p>
+                </div>
+                <div class="label-value string">
+                  <p class="label">Provisioned</p>
+                  <p class="value">{{config.Provisoned }}</p>
+                </div>
+                <div class="label-value paragraph">
+                  <p class="label">Components</p>
+                  <p class="value"> {{config.Components}}</p>
+                </div>
+                <div class="label-value paragraph">
+                  <p class="label">Notes</p>
+                  <p class="value">{{config.Remark}}</p>
+                </div>
+                <div class="label-value accordion">
+                  <p class="label">Requested Units</p>
+                  <div class="accordion-panel table-accordion">
+                    <input [id]="'test-teams'+config.Id" name="test-teams" type="checkbox">
+                    <label [for]="'test-teams'+config.Id" class="table-head-panel">
+                              <table class="accordion-label-table">
+                                <thead>
+                                 <tr>
+                                    <th width="20%">Teams</th>
+                                    <th width="8%" class="integer">Qty</th>
+                                    <th width="30%">Location</th>
+                                    <th width="22%">Subsystem</th>
+                                    <th width="8%" class="integer">Priority</th>
+                                    <th width="8%"></th>
+                                  </tr>
+                                </thead>
+                              </table>
+                    </label>
+                    <article class="accordion-body unit-requests">
+                      <table class="accordion-body-table">
+                        <thead class="shortest">
+                          <tr>
+                            <th width="20%"></th>
+                            <th width="8%"></th>
+                            <th width="30%"></th>
+                            <th width="22%"></th>
+                            <th width="8%"></th>
+                            <th width="8%"></th>
+                          </tr>
+                        </thead>
+                        <tbody class="editing" *ngFor="let userRequestsByTeam of config.UserRequests">
+                          <td class="section-header" colspan="4">{{userRequestsByTeam[0].TeamName}}</td>
+                          <tr *ngFor="let userRequest of userRequestsByTeam">
+                            <td class="field name">
+                              <p class="control">
+                                <input class="input" type="text" name="UserName" [(ngModel)]="userRequest.UserName" placeholder="Tester Name" disabled/>
+                              </p>
+                            </td>
+                            <td class="field integer">
+                              <p class="control">
+                                <input class="input" type="number" name="RequestedQty" min="0" [(ngModel)]="userRequest.RequestedQty" placeholder="Units"
+                                />
+                              </p>
+                            </td>
+                            <td class="field string">
+                              <p class="control">
+                                <input class="input" type="text" name="Location" [(ngModel)]="userRequest.Location" placeholder="Location" />
+                              </p>
+                            </td>
+                            <td class="field string">
+                              <p class="control">
+                                <input class="input" type="text" name="SubSystem" [(ngModel)]="userRequest.SubSystem" placeholder="Sub-system" />
+                              </p>
+                            </td>
+                            <td class="field integer">
+                              <p class="control">
+                                <input class="input" type="number" name="Priority" [(ngModel)]="userRequest.Priority" min="0" max="8" placeholder="##" />
+                              </p>
+                            </td>
+                            <td class="table-icon-toolbar" style="background-color:#F2F2F2">
+                              <a (click)="editDetails( config.Id, userRequest.Id, $event)" class="icon-btn icon-btn-md icon-save" title="Save"></a>
+                              <a class="icon-btn icon-btn-md icon-cancel" title="Cancel"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </section>
+</main>

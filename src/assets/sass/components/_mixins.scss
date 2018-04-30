@@ -4,6 +4,11 @@
     background-color: $ribbon-background;
     height: $ribbon-height;
     padding: 0 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
 }
 
 @mixin body-elements {
@@ -31,6 +36,13 @@
 @mixin label-value-div {
     .label {@include label;}
     .value {@include value;}
+}
+
+@mixin truncate {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    word-wrap: break-word;
 }
 
 /*Flexbox*/
@@ -86,32 +98,47 @@
 	flex: 1 0 100%;
 }
 
+@mixin full-width {
+    flex: 1 1 90vw;
+}
+
 @mixin one-eighth-flex {
     flex: 0 1 calc(12.5% - .2em);
 }
 
 @mixin one-sixth-flex {
-    flex: 0 1 calc(15% - .2em);
+    flex: 0 1 calc(14.5% - .2em);
 }
 
 @mixin one-fifth-flex {
-    flex: 0 1 calc(20% - .2em);
+    flex: 0 1 calc(19.5% - .2em);
 }
 
 @mixin one-quarter-flex {
-    flex: 0 1 calc(25% - .2em);
+    flex: 0 1 calc(24.6% - .2em);
 }
 
 @mixin one-third-flex {
-    flex: 0 1 calc(33% - .2em);
+    flex: 0 1 calc(32.5% - .2em);
 }
 
 @mixin two-thirds-flex {
-    flex: 0 1 calc(66% - .2em);
+    flex: 0 1 calc(65.5% - .2em);
 }
 
 @mixin half-flex {
-    flex: 0 1 calc(50% - .2em);
+    flex: 0 1 calc(49.5% - .2em);
+}
+
+@mixin object-grid {
+    @include flex-row-wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+}
+
+@mixin object-grid-object {
+    margin-right: $generous-space;
+    &:not(:last-child) {margin-bottom: $generous-space;}
 }
 
 /*List mixins*/
@@ -125,6 +152,11 @@
     border: 0;
     border-radius: 0;
     border-color: transparent;
+}
+
+@mixin horizontal-list {
+    display: inline-flex;
+    position: relative;     
 }
 
 /*Control mixins*/
@@ -173,6 +205,14 @@
         background-color: $accent05;
         border-right: $milestone-btn-normal;
     }
+    &[disabled] {
+        display: none;
+        &:hover,
+        &:focus {
+            color: $neutral04;
+            background-color: $neutral05;
+        }
+    }
 }
 
 @mixin add-button-device {
@@ -200,8 +240,8 @@
 
 @mixin standard-input {
     @include input-reset;
-    border: 1px solid $neutral04;
-    background-color: transparent;
+    border: 1px solid $input-border;
+    background-color: $input-bkg;
     &:hover,
     &:focus,
     &:active {border-color: $neutral07;}
@@ -235,14 +275,79 @@
     input[type="radio"] {display:none;}
 }
 
+@mixin required-indicator {
+    &::after {
+        content: "*";
+        color: $critical;
+    }
+}
+
+@mixin checkbox {
+    input {display:none;}
+    .label {@include input-text-default}
+    .icon {
+        margin-right: $thin-space;
+        cursor: pointer;
+        color: $neutral07;
+        transition: $text-in-transition;
+        &:hover,
+        &:focus {
+            color: $neutral09;
+            transition: $text-out-transition;
+        }
+    }
+    .icon:before {
+        content: "\e911";
+        }
+    input:checked ~ .label .icon {
+        color: $neutral09;
+        &:before {
+            content: "\e903";
+        }
+    }
+}
+
+@mixin checkbox-solo {
+    input[type=checkbox] {display:none;}
+    label.icon {
+        @include cell-icon-box;
+        @include icon-extension;
+        color: $neutral07;
+        transition: $text-in-transition;
+        &:before {
+            content: "\e911";
+            cursor: pointer;
+        }
+        &:hover {
+            color: $neutral09;
+            transition: $text-out-transition;
+        }
+    }
+    input:checked ~ label.icon {
+        &:before {content: "\e903";}
+        transition: $text-out-transition;
+        color: $neutral09;
+    }
+}
+
+
+@mixin icon-toolbar {
+    @include flex-row-nowrap;
+    &:first-child {margin-right: $default-space;}
+    .icon-btn {
+        line-height: $icon-line-height;
+        padding-left: $default-space;
+        color: $neutral05;
+        padding: $hair-space $thin-space;
+        &:first-child {padding-left: 0;}
+        &:hover {color: $neutral01;}
+    }
+}
+
 /*Accordion animations*/
 
 
-@mixin accordion-animate-in {
-	overflow: hidden;
-	height: 0px;
-	position: relative;
-	z-index: 10;
+@mixin accordion-animate-out {
     -webkit-transition: $open-accordion-panel;
     -moz-transition: $open-accordion-panel;
     -o-transition: $open-accordion-panel;
@@ -250,7 +355,11 @@
     transition: $open-accordion-panel;
 }
 
-@mixin accordion-animate-out {
+@mixin accordion-animate-in {
+    overflow: hidden;
+	height: 0px;
+	position: relative;
+	z-index: 10;
     -webkit-transition: $close-accordion-panel;
     -moz-transition: $close-accordion-panel;
     -o-transition: $close-accordion-panel;
@@ -260,9 +369,14 @@
 
 /*Shapes*/
 
-@mixin triangle-right { 
-    width: 0; 
+@mixin shape-content {
+    content: "";
+    width: 0;
     height: 0;
+}
+
+@mixin triangle-right { 
+    @include shape-content;
     border-top-style: solid;
     border-top-width: 20px;
     border-top-color: transparent;
@@ -274,11 +388,38 @@
 }
 
 @mixin triangle-right-disabled {
-    width: 0;
-    height: 0;
+    @include shape-content;
     border-top: 20px solid transparent;
     border-left: 0px solid $neutral08;
     border-bottom: 20px solid transparent;
+}
+
+@mixin arrow-left {
+    @include arrow-end;
+    @include shape-content;
+    left: -10px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+@mixin arrow-left-active {
+    @include arrow-end-active;
+    @include shape-content;
+    left: -10px;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+@mixin arrow-head {
+    @include arrow-tip;
+    @include shape-content;
+}
+
+@mixin arrow-head-active {
+    @include arrow-tip-active;
+    @include shape-content;
 }
 
 /*Add panel*/

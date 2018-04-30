@@ -54,6 +54,7 @@ $display-type:                  "SegoeUI-light", $default-font-stack;
 $secondary-display-type:        "SegoeUI", $default-font-stack;
 $body-copy:                     "SegoeUI", $default-font-stack;
 $small-label:                   "SegoeUI-semibold", $default-font-stack;
+$bold:                          $small-label;
 
 /*Tyography mixins*/
 
@@ -99,6 +100,11 @@ $small-label:                   "SegoeUI-semibold", $default-font-stack;
 @mixin value {
     @include body-text;
     font-size: $h5-default;
+}
+
+@mixin table-bold-text {
+    font-family: $bold;
+    font-size: $sm-font-size;
 }
 
 /*Headings*/
@@ -147,6 +153,39 @@ a {
 
 .label-sc {
     @include label;
+    display: block;
+}
+
+li p {
+    @include body-text;
+    font-size: $font-size-default;
+}
+
+@mixin line-item {
+    @include body-text;
+    font-size: $font-size-default;
+}
+
+.table,
+.accordion-label-table,
+.accordion-body-label,
+.accordion-body-table {
+    th, td {
+        font-size: $sm-font-size;
+        @include body-text;
+    }
+    th {@include table-bold-text;}
+    td {}
+    .integer {text-align: center;}
+    .section-header {
+        color: $accent02;
+        @include table-bold-text;
+        
+    }
+}
+
+.alert {
+    border-radius: 50%;
 }
 
 /*Icons*/
@@ -177,17 +216,49 @@ a {
   -moz-osx-font-smoothing: grayscale;
 }
 
+@mixin icon-extension {
+    font-family: 'dcm-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .icon {
     min-width: $icon-width-height;
     min-height: $icon-width-height;
 }
 
+.icon-btn-xs {font-size: $xs-icon * .8;}
 .icon-btn-sm {font-size: $xs-icon;}
 .icon-btn-md {font-size: $md-icon;}
 .icon-btn-lg {font-size: $lg-icon;}
 .icon-btn-xl {font-size: $xl-icon;}
 
+
+@mixin very-small-icon-box {
+    display:inline-block;
+    width: $default-space;
+    height: $default-space;
+    margin-right: $default-space;
+    vertical-align: middle;
+}
+
+@mixin cell-icon-box {
+    width: $generous-space;
+    height: $generous-space;
+    vertical-align: middle;
+}
+
 /*Icon catalogue*/
+
+.icon-calendar:before {
+  content: "\e916";
+}
 
 .icon-duplicate:before {
     content: "\e915";

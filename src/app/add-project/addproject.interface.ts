@@ -9,7 +9,9 @@ export interface Project {
     id: string;
     name: string;
     components: string;
-    ApprovedQty: number;
+    description:string;
+    units: number;
+    subsystem: string;
     assignedTo: string;
     testTeam: string;
     location: string;
@@ -17,9 +19,9 @@ export interface Project {
     targetDate: Date;
     shippedDate: Date;
     unitsShipped: number;
-    provisioned: boolean;
+    prvisioned: string;
     smoketest: string;
-    Remark: string;
+    notes: string;
 
 
 }

@@ -1,0 +1,768 @@
+
+    <main class="project-view phase-view leadpm">
+        <header class="phase-view-title">
+            <div class="icon-toolbar hide">
+                <a href="#" class="icon-btn icon-edit" title="edit project"></a>
+                <a href="#" class="icon-btn icon-trash-open" title="delete project" disabled></a>
+            </div>
+            <p class="summary">A brief summary describing the project here.</p>
+        </header>
+        <section class="phase">
+            <nav class="phase-selector tabs">
+                <p class="label-sc">Phases</p>
+                <ul>
+                    <li class="tab-btn is-active">
+                        <a class="phase-name" href="#">Phase 01</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="tab-btn">
+                        <a class="phase-name" href="#">Phase 02</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="tab-btn">
+                        <a class="phase-name" href="#">Phase 03</a>
+                        <div class="icon-toolbar">
+                            <a href="#" class="icon-btn icon-btn-sm icon-edit" title="Edit Phase"></a>
+                            <a href="#" class="icon-btn icon-btn-sm icon-trash-open" title="Delete Phase"></a>
+                        </div>
+                    </li>
+                    <li class="add-tab"><a class="button add"><span class="icon icon-add"></span></a></li>
+                </ul>
+            </nav>
+            <section class="milestone-view columns">
+                <div class="column is-2 milestone-nav">
+                    <div class="milestone-btn-group">
+                        <p class="label-sc">Milestones</p>
+                        <div class="milestone-tab selected">
+                            <a href="#">Milestone01</a>
+                            <div class="icon-toolbar hide">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+                   
+                        <div class="milestone-tab">
+                            <a href="#">Milestone02</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-tab">
+                            <a href="#">Milestone03</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+                        
+                        <div class="milestone-tab">
+                            <a href="#">Milestone04</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Edit Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-duplicate" title="Clone Milestone"></a>
+                                <a href="#" class="icon-btn icon-btn-md icon-trash-open" title="Delete Milestone"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="button add" disabled>
+                        <span class="icon icon-add"></span>
+                    </a>
+                </div>
+                <div class="column is-2 device-nav">
+                    <section class="accordion device-accordion">
+                        <p class="label-sc">Devices</p>
+                        <div class="accordion-panel">
+                            <input id="device01" type="radio" checked="">
+                            <label for="device01" class="with-accessories">
+                                <h4 class="accordion-label">Device01</h4>
+                                <div class="accessories-indicator">
+                                    <p class="device-count">4</p>
+                                    <span class="icon icon-sm icon-drop-down"></span>
+                                </div>
+                                <div class="triangle-right"></div>
+                            </label>
+                            <article class="accessories-list short">
+                                <a href="#" class="button accordion-btn">Accessory0101</a>
+                                <a href="#" class="button accordion-btn">Accessory0102</a>
+                                <a href="#" class="button accordion-btn">Accessory0103</a>
+                                <a href="#" class="button accordion-btn">Accessory0104</a>
+                                <a href="#" class="button add"><span class="icon icon-add"></span></a>
+                            </article>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device02" type="radio">
+                            <label for="device02" class="device-only">
+                                <h4 class="accordion-label">Device02</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device03" type="radio">
+                            <label for="device03" class="device-only">
+                                <h4 class="accordion-label">Device03</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device04" type="radio">
+                            <label for="device04" class="device-only">
+                                <h4 class="accordion-label">Device04</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device05" type="radio">
+                            <label for="device05" class="with-accessories">
+                                <h4 class="accordion-label">Device05</h4>
+                                <div class="accessories-indicator">
+                                    <p class="device-count">7</p>
+                                    <span class="icon icon-sm icon-drop-down"></span>
+                                </div>
+                                <div class="triangle-right"></div>
+                            </label>
+                            <article class="accessories-list short">
+                                <a href="#" class="button accordion-btn">Accessory0501</a>
+                                <a href="#" class="button accordion-btn">Accessory0502</a>
+                                <a href="#" class="button accordion-btn">Accessory0503</a>
+                                <a href="#" class="button accordion-btn">Accessory0504</a>
+                                <a href="#" class="button accordion-btn">Accessory0505</a>
+                                <a href="#" class="button accordion-btn">Accessory0506</a>
+                                <a href="#" class="button accordion-btn">Accessory0507</a>
+                                <a href="#" class="button add"><span class="icon icon-add"></span></a>
+                            </article>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device06" type="radio">
+                            <label for="device06" class="device-only">
+                                <h4 class="accordion-label">Device06</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                        <div class="accordion-panel">
+                            <input id="device07" type="radio">
+                            <label for="device07" class="device-only">
+                                <h4 class="accordion-label">Device07</h4>
+                                <div class="accessories-indicator"></div>
+                                <div class="triangle-right"></div>
+                            </label>
+                        </div>
+                    </section>
+                    <a class="button add"><span class="icon icon-add"></span></a>
+                </div>
+                <div class="column device-view">
+                    <nav class="header">
+                        <h2>Device01</h2>
+                        <div class="btn-group">
+                            <a href="#" class="button add"><span class="icon icon-sm icon-add"></span> Accessory</a>
+                            <a href="#" class="button add"><span class="icon icon-sm icon-add"></span> Configuration</a>
+                            <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-md icon-edit" title="edit project"></a>
+                                <a href="#" class="icon-btn icon-md icon-trash-open" title="delete project" disabled></a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <section class="configuration-accordion">
+                        <p class="label-sc">Configurations</p>
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel">
+                            <input id="d01c01" name="d01c01" type="checkbox" checked="checked">
+                            <label for="d01c01" class="configuration-label">
+                                <h4>Configuration01</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">36</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">07/05/17</p>
+                                </div>
+                                <div class="icon-toolbar hide">
+                                    <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                    <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                                </div>
+                            </label>
+                            <article class="accordion-body configuration-detail">
+                                <div class="meta-data-group">
+                                    <div class="label-value string">
+                                        <p class="label">Name</p>
+                                        <p class="value">Configuration01withalonglong-longstring-to-be-overly-specific</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Assigned to</p>
+                                        <p class="value">Tester-name-last-name-birthdate-dogs-name-dentists-name-car-model</p>
+                                    </div>
+                                    <div class="label-value date">
+                                        <p class="label">Shipped Date</p>
+                                        <p class="value">mm/dd/yyyy</p>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Priority</p>
+                                        <p class="value">03</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Subsystem</p>
+                                        <p class="value">Subsystem-long-name-put-lots-of-miscellaneous-data-in-here-but-it-will-be-truncated</p>
+                                    </div>
+                                    <div class="label-value accordion">
+                                        <p class="label">Requested Units</p>
+                                        <div class="accordion-panel table-accordion">
+                                            <input id="test-teams" name="test-teams" type="checkbox">
+                                            <label for="test-teams" class="table-head-panel">
+                                                <table class="accordion-label-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="20%"><span class="icon-btn-xs icon-drop-down"></span>Teams</th>
+                                                            <th width="8%" class="integer">Qty (39)</th>
+                                                            <th width="30%">Location</th>
+                                                            <th width="22%">Subsystem</th>
+                                                            <th width="8%" class="integer">Priority</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </label>
+                                            <article class="accordion-body unit-requests">
+                                                <!--Table with team and tester and unit info-->
+                                                <table class="accordion-body-table">
+                                                    <thead class="shortest">
+                                                        <tr>
+                                                            <th width="20%"></th>
+                                                            <th width="8%"></th>
+                                                            <th width="30%"></th>
+                                                            <th width="22%"></th>
+                                                            <th width="8%"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="editing">
+                                                        <tr class="subsection">
+                                                            <td class="section-header" colspan="4">Team01</td>
+                                                            <td class="table-icon-toolbar">
+                                                                <a href="#" class="icon-btn icon-btn-md icon-save" title="Save"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-cancel" title="Cancel"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Cancel"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="field name">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Tester Name"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Location"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Sub-system"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="field name">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Tester Name"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Location"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Sub-system"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="field name">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Tester Name"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Location"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Sub-system"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td> 
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="field name">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Tester Name"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Location"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field string">
+                                                                <p class="control">
+                                                                    <input class="input" type="text" placeholder="Sub-system"/>
+                                                                </p>
+                                                            </td>
+                                                            <td class="field integer">
+                                                                <p class="control">
+                                                                    <input class="input" type="number" placeholder="##"/>
+                                                                </p>
+                                                            </td> 
+                                                        </tr>
+                                                    </tbody>
+                                                    <tbody class="editable">
+                                                        <tr class="subsection">
+                                                            <td colspan="4" class="section-header">Team02</td>
+                                                            <td class="table-icon-toolbar">
+                                                                <a href="#" class="icon-btn icon-btn-md icon-save" title="Save"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-cancel" title="Cancel"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Cancel"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User05</td>
+                                                            <td class="integer">2</td>
+                                                            <td>Paris</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User06</td>
+                                                            <td class="integer">9</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User07</td>
+                                                            <td class="integer">1</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">4</td>                                                            
+                                                        </tr>
+                                                    </tbody>
+                                                    <tbody class="editable">
+                                                        <tr class="subsection">
+                                                            <td colspan="4" class="section-header">Team03</td>
+                                                            <td class="table-icon-toolbar">
+                                                                <a href="#" class="icon-btn icon-btn-md icon-save" title="Save"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-cancel" title="Cancel"></a>
+                                                                <a href="#" class="icon-btn icon-btn-md icon-edit" title="Cancel"></a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User08</td>
+                                                            <td class="integer">2</td>
+                                                            <td>Celtic</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User09</td>
+                                                            <td class="integer">9</td>
+                                                            <td>Monkeytown</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">2</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User10</td>
+                                                            <td class="integer">1</td>
+                                                            <td>Norwood</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">9</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--End table-->
+                                            </article>
+                                        </div>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Shipped Units</p>
+                                        <p class="value">543</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Ship Destination</p>
+                                        <p class="value">Name, title, department, address, city, state, country, postal code</p>
+                                    </div>
+                                    <div class="label-value checkbox">
+                                        <input id="provisioned-boole" name="provisioned-boole" type="checkbox" disabled>
+                                        <label for="provisioned-boole" class="label"><span class="icon icon-sm icon-checked"></span>Provisioned</label>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Smoke Test</p>
+                                        <p class="value">Tested with lots of smoke.</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Components</p>
+                                        <p class="value">Components list and detail. Can be a really long string or list.</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Notes</p>
+                                        <p class="value">This space has any additional notes or comments on this configuration.</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel">
+                            <input id="d01c02" name="d01c02" type="checkbox">
+                            <label for="d01c02" class="configuration-label">
+                                <h4>Configuration02</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">21</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">07/06/17</p>
+                                </div>
+                                <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                            </div>
+                            </label>
+                            <article class="accordion-body configuration-detail">
+                                <div class="meta-data-group">
+                                    <div class="label-value string">
+                                        <p class="label">Name</p>
+                                        <p class="value">Configuration01withalonglong-longstring-to-be-overly-specific</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Assigned to</p>
+                                        <p class="value">Tester-name-last-name-birthdate-dogs-name-dentists-name-car-model</p>
+                                    </div>
+                                    <div class="label-value date">
+                                        <p class="label">Shipped Date</p>
+                                        <p class="value">mm/dd/yyyy</p>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Priority</p>
+                                        <p class="value">03</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Subsystem</p>
+                                        <p class="value">Subsystem-long-name-put-lots-of-miscellaneous-data-in-here-but-it-will-be-truncated</p>
+                                    </div>
+                                    <div class="label-value accordion">
+                                        <p class="label">Requested Units</p>
+                                        <div class="tree-expander">
+                                            <h3>An expanding view of test teams and requested units for each here.</h3>
+                                        </div>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Shipped Units</p>
+                                        <p class="value">543</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Ship Destination</p>
+                                        <p class="value">Name, title, department, address, city, state, country, postal code</p>
+                                    </div>
+                                    <div class="label-value checkbox">
+                                        <input id="provisioned-boole" name="provisioned-boole" type="checkbox" disabled>
+                                        <label for="provisioned-boole" class="label"><span class="icon icon-sm icon-checked"></span>Provisioned</label>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Smoke Test</p>
+                                        <p class="value">Tested with lots of smoke.</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Components</p>
+                                        <p class="value">Components list and detail. Can be a really long string or list.</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Notes</p>
+                                        <p class="value">This space has any additional notes or comments on this configuration.</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <!--Configuration Panel-->
+                        <div class="accordion-panel">
+                            <input id="d01c03" name="d01c03" type="checkbox">
+                            <label for="d01c03" class="configuration-label">
+                                <h4>Configuration03 (8980jieljlk)</h4>
+                                <div class="label-value">
+                                    <p class="label">Units</p>
+                                    <p class="value">39</p>
+                                </div>
+                                <div class="label-value">
+                                    <p class="label">Target Date</p>
+                                    <p class="value">07/06/17</p>
+                                </div>
+                                <div class="icon-toolbar">
+                                <a href="#" class="icon-btn icon-md icon-edit" title="edit configuration"></a>
+                                <a href="#" class="icon-btn icon-md icon-trash-open" title="delete configuration" disabled></a>
+                            </div>
+                            </label>
+                            <article class="accordion-body configuration-detail">
+                                <div class="meta-data-group">
+                                    <div class="label-value string">
+                                        <p class="label">Name</p>
+                                        <p class="value">Configuration01withalonglong-longstring-to-be-overly-specific</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Assigned to</p>
+                                        <p class="value">Tester-name-last-name-birthdate-dogs-name-dentists-name-car-model</p>
+                                    </div>
+                                    <div class="label-value date">
+                                        <p class="label">Shipped Date</p>
+                                        <p class="value">mm/dd/yyyy</p>
+                                    </div>
+
+                                    <div class="label-value accordion">
+                                        <p class="label">Requested Units</p> 
+                                        <div class="accordion-panel table-accordion">
+                                            <input id="test-teams02" name="test-teams" type="checkbox">
+                                            <label for="test-teams02" class="table-head-panel">
+                                                <table class="accordion-label-table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th width="10%"><span class="icon-btn-xs icon-drop-down"></span>Teams</th>
+                                                            <th width="17%" class="integer">Quantity<span class="alert"> (39)</span></th>
+                                                            <th width="30%">Location</th>
+                                                            <th width="22%">Subsystem</th>
+                                                            <th width="10%" class="integer">Priority</th>
+                                                            <th width="12%" class="control">Approved</th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
+                                            </label>
+                                            <article class="accordion-body unit-requests">
+                                                <!--Table with team and tester and unit info-->
+                                                <table class="accordion-body-table">
+                                                    <thead class="shortest">
+                                                        <tr>
+                                                            <th width="10%"></th>
+                                                            <th width="17%"></th>
+                                                            <th width="30%"></th>
+                                                            <th width="22%"></th>
+                                                            <th width="10%"></th>
+                                                            <th width="12%"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <td class="section-header" colspan="4">Team01</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                User01
+                                                            </td>
+                                                            <td class="integer">5</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved01" type="checkbox">
+                                                                    <label for="approved01" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User02</td>
+                                                            <td class="integer">9</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved02" type="checkbox">
+                                                                    <label for="approved02" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User03</td>
+                                                            <td class="integer">1</td>
+                                                            <td>Antafagasto</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved03" type="checkbox">
+                                                                    <label for="approved03" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tbody>
+                                                        <tr><td colspan="4" class="section-header">Team02</td></tr>
+                                                        <tr>
+                                                            <td>User05</td>
+                                                            <td class="integer">2</td>
+                                                            <td>Paris</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved04" type="checkbox">
+                                                                    <label for="approved04" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User06</td>
+                                                            <td class="integer">9</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved05" type="checkbox">
+                                                                    <label for="approved05" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User07</td>
+                                                            <td class="integer">1</td>
+                                                            <td>Shreveport</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">4</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved06" type="checkbox">
+                                                                    <label for="approved06" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                    <tbody>
+                                                        <tr><td colspan="4" class="section-header">Team03</td></tr>
+                                                        <tr>
+                                                            <td>User08</td>
+                                                            <td class="integer">2</td>
+                                                            <td>Celtic</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">3</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved07" type="checkbox">
+                                                                    <label for="approved07" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User09</td>
+                                                            <td class="integer">9</td>
+                                                            <td>Monkeytown</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">2</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved08" type="checkbox">
+                                                                    <label for="approved08" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>User10</td>
+                                                            <td class="integer">1</td>
+                                                            <td>Norwood</td>
+                                                            <td>A SS Name</td>
+                                                            <td class="integer">9</td>
+                                                            <td class="control">
+                                                                <form class="cell-boole">
+                                                                    <input id="approved09" type="checkbox">
+                                                                    <label for="approved09" class="icon"></label>
+                                                                </form>  
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--End table-->
+                                            </article>
+                                        </div>
+                                    </div>
+                                    <div class="label-value integer">
+                                        <p class="label">Shipped Units</p>
+                                        <p class="value">543</p>
+                                    </div>
+                                    <div class="label-value string">
+                                        <p class="label">Ship Destination</p>
+                                        <p class="value">Name, title, department, address, city, state, country, postal code</p>
+                                    </div>
+                                    <div class="label-value checkbox">
+                                        <input id="provisioned-boole" name="provisioned-boole" type="checkbox" disabled>
+                                        <label for="provisioned-boole" class="label"><span class="icon icon-sm icon-checked"></span>Provisioned</label>
+                                    </div>
+                                    <div class="label-value checkbox">
+                                        <input id="smoke-test-boole" name="smoke-test-boole" type="checkbox" disabled>
+                                        <label for="smoke-test-boole" class="label"><span class="icon icon-sm icon-unchecked"></span>Smoke Test</label>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Components</p>
+                                        <p class="value">Components list and detail. Can be a really long string or list.</p>
+                                    </div>
+                                    <div class="label-value paragraph">
+                                        <p class="label">Notes</p>
+                                        <p class="value">This space has any additional notes or comments on this configuration.</p>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </section>
+    </main>

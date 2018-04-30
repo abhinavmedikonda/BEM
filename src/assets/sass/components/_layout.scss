@@ -8,9 +8,10 @@ html {
 
 .screen-title {
     @include body-elements;
+    padding-top: $title-below-ribbon;
     h1 {
         color: $neutral01;
-        margin: .5rem 0 1rem;
+        margin: 0 0 $comfortable-space;
     }
 }
 
@@ -62,7 +63,10 @@ main {
         justify-content: space-between;
         align-items: center;
         margin-bottom: $default-space;
-        h2 {flex: 1 0 auto;}
+        h2 {
+            @include auto-width-flex;
+            @include truncate;
+        }
         .btn-group {
             @include flex-row-nowrap;
             justify-content: flex-end;
@@ -123,6 +127,48 @@ main {
     }
 }
 
+.phase-selector {
+    flex-direction: column;
+    .label-sc {color: $neutral06;}
+}
+
+/*Tables*/
+
+.table,
+.accordion-label-table,
+.accordion-body-table {
+    td, th {
+        @include truncate;
+        padding: $thin-space $short-space;
+    }
+    .shortest tr th {
+        height: 0;
+        padding: 0;
+    }
+    th.integer {text-align: center;}
+    td.integer {text-align: center;}
+    th.control {text-align: left;}
+    td.control {text-align: center}
+    tbody {
+        background-color: $neutral02;
+        border-bottom: 1px solid $neutral04;
+        &:last-child {border-bottom: 0 solid transparent;}
+        tr {
+            border-bottom: 1px solid $neutral01;
+            &:last-child {border-bottom: 0 solid transparent;}
+        }
+        tr.subsection {border-bottom: 0 solid transparent;}
+    }
+    .section-header {
+        background-color: $neutral01;
+    }
+    td:not(.section-header):first-child {padding-left: $luxury-space;}
+    td.field {
+        padding: $thin-space;
+        &:first-child {padding-left: $thin-space}
+    }
+}
+
 /*Task Panels*/
 
 .task-panel {
@@ -132,7 +178,7 @@ main {
 }
 
 .task-view {
-    margin-top: 2em;
+    margin-top: $main-below-ribbon;
     &~.screen-title {
         margin-top: 0;
     }
@@ -154,25 +200,81 @@ main {
             padding: $generous-space 0 0 $generous-space;
         }
         &.optional {
-            padding: $generous-space;
+            padding: $generous-space 0 $generous-space $generous-space;
+            .breadcrumbs {margin: 0 $generous-space $generous-space 0;}
         }
     }
     .long-field-group {
-        @include flex-row-wrap;
-        justify-content: flex-start;
-        .field {
-            margin-right: $default-space;
-            &:not(:last-child) {
-                margin-bottom: $generous-space;
-            }
-        }
+        @include object-grid;
+        .field {@include object-grid-object;}
         .string {@include auto-width-flex;}
         .integer {@include one-eighth-flex;}
         .name {@include one-third-flex;}
-        .date {@include one-fifth-flex;}
-        .text-area {@include full-width-tile;}
-        .checkbox {@include one-eighth-flex;}
-        .radio {@include one-eighth-flex;}
+        .date {@include one-quarter-flex;}
+        .text-area {
+            @include full-width-tile;
+            .control {margin-right: $generous-space;}
+        }
+        .checkbox {
+            @include one-quarter-flex;
+            display: inline-flex;
+            align-items: center;
+        }
+        .radio {@include one-quarter-flex;}
+    }
+}
+
+/*Meta-data grid*/
+.meta-data-group {
+    @include object-grid;
+    .label-value {@include object-grid-object;}
+}
+
+/*Breadcrumbs*/
+
+.breadcrumbs {
+    @include full-width;
+    padding: $short-space 0;
+    background-color: $neutral03;
+    overflow: hidden;
+    .breadcrumb-list {
+        @include flex-row;
+        margin: 0 $short-space;
+        justify-content: space-around;
+    }
+    .breadcrumb {
+        @include horizontal-list;
+        justify-content: flex-start;
+        align-items: center;
+        flex: 1 1 17%;
+        max-width: 17%;
+        &:not(:first-child) {margin-left: -9px;}
+        p {
+            @include truncate;
+            height: 32px;
+            padding: $thin-space $default-space;
+            background-color: $breadcrumb;
+        }
+        &::before {
+            @include arrow-left;
+        }
+        &::after{
+            @include arrow-head;
+        }
+        &:first-child {
+            &::before {display: none;}
+        }
+        &:last-child {
+            &::after {display: none;}
+        }
+    }
+    .breadcrumb.current {
+        p {
+            background-color: $breadcrumb-active;
+            color: $neutral01;
+        }
+        &::before {@include arrow-left-active;}
+        &::after {@include arrow-head-active;}
     }
 }
 
@@ -187,7 +289,12 @@ main {
 }
 .device-accordion {
     @include hide-checkbox;
+    @include hide-radio;
     margin-bottom: $thin-space;
+    .label-sc {
+        margin-bottom: $comfortable-space;
+        color: $neutral05;
+        }
     .accordion-panel {
         &:not(:last-child) {margin-bottom: $thin-space;}
     }
@@ -203,6 +310,10 @@ main {
 }
 
 .configuration-accordion {
+    .label-sc {
+            color: $neutral06;
+            margin-bottom: $default-space;
+        }
     .accordion-panel {
         @include hide-checkbox;
         &:not(:last-child) {margin-bottom: $hair-space;}
@@ -216,13 +327,16 @@ main {
             cursor: pointer;
             transition: $button-in-transition;
             h4 {
+                @include one-third-flex;
                 color: $neutral03;
-                flex: 1 0 auto;
+                @include truncate;
+                display: block;
+                margin-right: $default-space;
             }
             .label-value {
                 @include label-value-div;
                 @include flex-row-nowrap;
-                flex: 1 0 auto;
+                @include one-quarter-flex;
                 align-items: center;
                 .label {
                     margin: 0 $short-space 0 0;
@@ -230,7 +344,12 @@ main {
                 }
                 .value {
                     color: $neutral03;
+                    @include truncate;
                 }
+            }
+            .icon-toolbar {
+                @include one-fifth-flex;
+                justify-content: flex-end;
             }
             &:hover,
             &:focus {
@@ -238,6 +357,61 @@ main {
                 transition: $button-out-transition;
             }
         }  
+    }
+    .accordion-panel input:checked ~ .accordion-body {
+        @include accordion-animate-out;
+        overflow-y: auto;
+    }
+    .accordion-panel input:checked ~ .configuration-label {
+        background-color: $accent02;
+        .label-value .label {color: $accent06;}
+        .icon-toolbar .icon-btn {
+            color: $accent06;
+            &:hover,
+            &:focus {color: $neutral01;}
+        }
+    }
+    .accordion-body {
+        @include accordion-animate-in;
+        &.configuration-detail {
+           background-color: $neutral01; 
+            }
+        .meta-data-group {padding: $comfortable-space;}
+        .label {color: $accent01;}
+        .value {color: $neutral09;}
+        .label-value {
+            @include label-value-div;
+            &.string,
+            &.date,
+            &.integer {
+                .value {@include truncate;}
+                }
+            &.accordion {}
+            &.checkbox {}
+            &.paragraph {}
+        }
+        
+    }
+}
+
+.accordion-panel.table-accordion {
+    .table-head-panel {
+        display: block;
+        cursor: pointer;
+        .icon-btn-xs {@include very-small-icon-box;}
+        }
+    .accordion-body.unit-requests {
+        @include accordion-animate-in;
+    }
+    input:checked ~ .accordion-body.unit-requests {
+        @include accordion-animate-out;
+        overflow-y: auto;
+        height: 340px;
+        max-height: 340px;
+        overflow-y:auto;
+    }
+    input:checked ~ .table-head-panel {
+        background-color: $accent06;
     }
 }
 
@@ -247,6 +421,8 @@ main {
     max-height: 200px;
     overflow-y: auto;
 }
+
+.accordion-panel input:checked ~
 .accordion-panel input:checked ~ .accessories-list.long{
 	height: 6em;
 }

@@ -1,259 +1,56 @@
-/*Typopgrahy standards*/
+/*Device Configuration Manager theme*/
 
-@mixin font-normalizer {
-    font-weight: normal;
-    font-style: normal;
-}
+/*Neutrals*/
 
-@font-face {
-    font-family: "SegoeUI-light";
-    src: url("fonts/segoeuil.ttf") format("truetype");
-}
+$neutral01:     #FFFFFF;
+$neutral02:     #F0F0F0;
+$input-bkg:     #F2F2F2;
+$neutral03:     #E3E3E3;
+$input-border:  #B3B3B3;
+$neutral04:     #BEBEBE;
+$neutral05:     #959595;
+$neutral06:     #8D8D8D;
+$neutral07:     #626262;
+$neutral08:     #2E2E2E;
+$neutral09:     #000000;
 
-@font-face {
-    font-family: 'SegoeUI-light-italic';
-    src: url("fonts/seguili.ttf") format("truetype");
-    @include font-normalizer;
-}
+/*Warm Palette*/
+/*
+$accent01:      #D83B01;
+$accent02:      #E55601;
+$accent03:      #F27100;
+$accent04:      #FF8C00; 
+$accent05:      #FFA90E;
+$accent06:      #FFC61C;
+*/
 
-@font-face {
-    font-family: 'SegoeUI';
-    src: url("fonts/segoeui.ttf") format("truetype");
-    @include font-normalizer;
-}
+/*Cool Palette*/
 
-@font-face {
-    font-family: 'SegoeUI-italic';
-    src: url("fonts/segoeuii.ttf") format("truetype");
-    @include font-normalizer;
-}
+$accent00:       #00188F;
+$accent01:       #0078D7;
+$accent02:       #0078A3;
+$accent03:       #00959B;
+$accent04:       #00B294;
+$accent05:       #00BCF2;
+$accent06:       #80D7D9;
 
-@font-face {
-    font-family: 'SegoeUI-semibold';
-    src: url("fonts/seguisb.ttf") format("truetype");
-    @include font-normalizer;
-}
-
-@font-face {
-    font-family: 'SegoeUI-semibold-italic';
-    src: url("fonts/seguisbi.ttf") format("truetype");
-    @include font-normalizer;
-}
-
-@font-face {
-    font-family: 'SegoeUI-bold';
-    src: uri("fonts/segoeuib.ttf") format("truetype");
-    @include font-normalizer;
-}
+/*Alert Colors*/
+$ms-dark-red:   #A80000;
+$ms-green:      #107C10;
 
 
-/*Typography variables*/
+/*Semantic Naming*/
 
-$default-font-stack:            "Helvetica", "Arial", sans-serif;
-$display-type:                  "SegoeUI-light", $default-font-stack;
-$secondary-display-type:        "SegoeUI", $default-font-stack;
-$body-copy:                     "SegoeUI", $default-font-stack;
-$small-label:                   "SegoeUI-semibold", $default-font-stack;
-
-/*Tyography mixins*/
-
-@mixin headings {
-    font-family: $display-type;
-    line-height: $line-height;
-    font-weight: 100;
-}
-
-@mixin body-text {
-    font-family: $body-copy;
-    line-height: $line-height;
-    font-weight: 300;
-}
-
-@mixin label {
-    font-family: $small-label;
-    font-size: $xs-font-size;
-    letter-spacing: .2rem;
-    font-variant-caps: small-caps;
-    font-feature-settings: "smcp";
-    text-transform: uppercase;
-    text-align: left;
-}
-
-@mixin html-defaults {
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-}
-
-@mixin input-text-default {
-    @include body-text;
-    font-size: $font-size-default;
-}
-
-@mixin centered-label {
-    @include body-text;
-    font-size: $font-size-default;
-    text-align: center;
-}
-
-@mixin value {
-    @include body-text;
-    font-size: $h5-default;
-}
-
-/*Headings*/
-
-h1 {
-    @include headings;
-    font-size: $h1-default;
-}
-
-h2 {
-    @include headings;
-    font-size: $h2-default;
-}
-
-h3, h4 {
-    font-family: $secondary-display-type;
-    line-height: $line-height;
-    font-weight: 100;
-}
-
-h3 {font-size: $h3-default;}
-
-h4 {font-size: $h4-default;}
-
-h5 {font-size: $h5-default;}
-
-a, p {
-    @include body-text;
-    font-size: $font-size-default;
-}
-
-a {
-    text-decoration: none;
-}
-
-.onboard-first {
-    h1, p {
-        margin: 0 0 .8rem;
-    }
-}
-
-.task-panel input,
-.task-panel .input {
-    @include input-text-default;
-}
-
-.label-sc {
-    @include label;
-}
-
-/*Icons*/
-
-@font-face {
-  font-family: 'dcm-icons';
-  src:  url('fonts/dcm-icons.eot?f6j250');
-  src:  url('fonts/dcm-icons.eot?f6j250#iefix') format('embedded-opentype'),
-    url('fonts/dcm-icons.ttf?f6j250') format('truetype'),
-    url('fonts/dcm-icons.woff?f6j250') format('woff'),
-    url('fonts/dcm-icons.svg?f6j250#dcm-icons') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-
-[class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'dcm-icons' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-.icon {
-    min-width: $icon-width-height;
-    min-height: $icon-width-height;
-}
-
-.icon-btn-sm {font-size: $xs-icon;}
-.icon-btn-md {font-size: $md-icon;}
-.icon-btn-lg {font-size: $lg-icon;}
-.icon-btn-xl {font-size: $xl-icon;}
-
-/*Icon catalogue*/
-
-.icon-duplicate:before {
-    content: "\e915";
-}
-
-.icon-user-outlined:before {
-  content: "\e913";
-}
-.icon-user:before {
-  content: "\e914";
-}
-
-.icon-add:before {
-  content: "\e900";
-}
-.icon-arrow-right:before {
-  content: "\e901";
-}
-.icon-cancel:before {
-  content: "\e902";
-}
-.icon-checked:before {
-  content: "\e903";
-}
-.icon-down:before {
-  content: "\e904";
-}
-.icon-drop-down:before {
-  content: "\e905";
-}
-.icon-edit:before {
-  content: "\e906";
-}
-.icon-greater-than:before {
-  content: "\e907";
-}
-.icon-heart-closed:before {
-  content: "\e908";
-}
-.icon-heart-open:before {
-  content: "\e909";
-}
-.icon-left-arrow:before {
-  content: "\e90a";
-}
-.icon-less-than:before {
-  content: "\e90b";
-}
-.icon-notification-closed:before {
-  content: "\e90c";
-}
-.icon-notification-open:before {
-  content: "\e90d";
-}
-.icon-save:before {
-  content: "\e90e";
-}
-.icon-trash-closed:before {
-  content: "\e90f";
-}
-.icon-trash-open:before {
-  content: "\e910";
-}
-.icon-unchecked:before {
-  content: "\e911";
-}
-.icon-up:before {
-  content: "\e912";
-}
+$background:            $neutral08;
+$ribbon-background:     $accent01;
+$project-background:    $neutral07;
+$phase-background:      $neutral07;
+$milestone-background:  $neutral05;
+$shadow:                rgba(0, 0, 0, 0.3);
+$semi-opaque:           rgba(255, 255, 255, 0.4);
+$add-btn-glyph:         $neutral03;
+$add-btn-bkg:           $neutral06;
+$critical:              $ms-dark-red;
+$success:               $ms-green;
+$breadcrumb:            $neutral01;
+$breadcrumb-active:     $accent05;

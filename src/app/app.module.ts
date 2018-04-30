@@ -11,25 +11,22 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { SendDataService } from './Services/send-data.service';
 import { AccesseriesModule } from './add-accesseries/accesseries.module';
 import { ViewModule } from '../app/view-project/view-project.module';
-import {NguiAutoCompleteModule} from '@ngui/auto-complete';
-// import { ModalComponent } from './modal/modal.component';
-
-
+import { NguiAutoCompleteModule } from '@ngui/auto-complete';
 
 @NgModule({
-    declarations: [
-        AppComponent, DashboardComponent, AddProjectComponent,
-    ],
-    imports: [
+  declarations: [
+    AppComponent, DashboardComponent, AddProjectComponent,
+  ],
+  imports: [
+    BrowserModule, ViewModule, NguiAutoCompleteModule,
+    JsonpModule,
+    FormsModule,
+    HttpModule,
+    MyDatePickerModule, AccesseriesModule,
+    RouterModule.forRoot(AppRoutes),
+  ],
+  providers: [SendDataService],
 
-        BrowserModule, ViewModule, NguiAutoCompleteModule,
-        JsonpModule,
-        FormsModule,
-        HttpModule,
-        MyDatePickerModule, AccesseriesModule,
-        RouterModule.forRoot(AppRoutes),
-    ],
-    providers: [SendDataService],
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,16 @@
 
-<main class="task-view onboarding-view onboard-first">
-    <section class="notification clean onboarding-notification">
-        <h1>No Projects to Display</h1>
-        <a href='/addProject' class="button xlarge clean-btn" title="Add a Project"><span class="icon icon-xl icon-add"></span></a>
-    </section>
-</main>
+ <main class="task-view onboarding-view onboard-first">
+        <section class="notification clean onboarding-notification">
+            <h1>No Projects to Display</h1>
+            <a [routerLink]="navigateToProject()" routerLinkActive="active" class="button xlarge clean-btn"[class.disabled]="!_haveAddPermission()" title="Add a Project"><span class="icon icon-xl icon-add"></span></a>
+        </section>
+    </main>
 
 <router-outlet></router-outlet>
+ <style type="text/css">
+   .disabled{
+     background-color: darkgray !important;
+     opacity: 1 !important;
+     cursor: not-allowed;
+   }
+   </style>

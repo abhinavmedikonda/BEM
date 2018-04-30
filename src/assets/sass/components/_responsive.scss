@@ -1,0 +1,150 @@
+/*Responsive Settings*/
+
+/*Mobile first*/
+
+@media screen and (min-width: 1px) {
+    .configuration-detail {
+        @include flex-row-nowrap;
+        .configuration-label {
+            .label-value {display: none;}
+        }
+        .label-value {
+            &.string {
+                @include full-width-tile;
+                max-width: 80vw;
+            }
+            &.date {
+                @include half-flex;
+                max-width: 45vw;
+            }
+            &.integer {
+                @include half-flex;
+                max-width: 45vw;
+            }
+            &.accordion {
+                @include full-width-tile;
+                max-width: 80vw;
+            }
+            &.checkbox {
+                @include half-flex;
+                max-width: 45vw;
+            }
+            &.paragraph {
+                @include full-width-tile;
+                max-width: 80vw;
+            }
+        }
+    }
+    .accordion-panel input:checked ~ .configuration-detail {
+        height: 35rem;
+        max-height: 35rem;
+    } 
+}
+
+@media screen and (min-width: $min-laptop) {
+    .configuration-detail {
+        @include flex-row-nowrap;
+        .label-value {
+            &.string {
+                @include one-quarter-flex;
+                max-width: 16vw;
+            }
+            &.date {
+                @include one-fifth-flex;
+                max-width: 12vw;
+            }
+            &.integer {
+                @include one-eighth-flex;
+                max-width: 8vw;
+            }
+            &.accordion {
+                @include full-width-tile;
+                max-width: 60vw;
+            }
+            &.checkbox {
+                @include one-fifth-flex;
+                max-width: 12vw;
+            }
+            &.paragraph {
+                @include one-third-flex;
+                max-width: 20vw;
+            }
+        }
+    }
+    .accordion-panel input:checked ~ .configuration-detail {
+        height: 35rem;
+        max-height: 35rem;
+    }
+}
+
+@media screen and (min-width: $min-tablet-h) {
+    .configuration-detail {
+        @include flex-row-nowrap;
+        .label-value {
+            &.string {
+                @include one-quarter-flex;
+                max-width: 16vw;
+            }
+            &.date {
+                @include one-fifth-flex;
+                max-width: 12vw;
+            }
+            &.integer {
+                @include one-eighth-flex;
+                max-width: 8vw;
+            }
+            &.accordion {
+                @include full-width-tile;
+                max-width: 60vw;
+            }
+            &.checkbox {
+                @include one-fifth-flex;
+                max-width: 12vw;
+            }
+            &.paragraph {
+                @include one-third-flex;
+                max-width: 20vw;
+            }
+        }
+    }
+    .accordion-panel input:checked ~ .configuration-detail {
+        height: 35rem;
+        max-height: 35rem;
+    }
+}
+
+@media screen and (min-width: $min-tablet) {
+    .configuration-detail {
+        @include flex-row-nowrap;
+        .label-value {
+            &.string {
+                @include half-flex;
+                max-width: 22vw;
+            }
+            &.date {
+                @include half-flex;
+                max-width: 22vw;
+            }
+            &.integer {
+                @include half-flex;
+                max-width: 22vw;
+            }
+            &.accordion {
+                @include full-width-tile;
+                max-widtdh: 70vw;
+            }
+            &.checkbox {
+                @include half-flex;
+                max-width: 22vw;
+            }
+            &.paragraph {
+                @include half-flex;
+                max-width: 22vw;
+            }
+        }
+    }
+    .accordion-panel input:checked ~ .configuration-detail {
+        height: 43rem;
+        max-height: 43rem;
+    }
+}

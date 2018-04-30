@@ -1,46 +1,62 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
-import { Http, Headers, Request, RequestMethod, Response, JsonpModule } from '@angular/http';
+import { Http, Headers, Request, RequestMethod, Response,JsonpModule } from '@angular/http';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class SendDataService {
+    public projectDetails = new EventEmitter<Object>();
     public pushDat = new EventEmitter<Object>();
-    private _baseURL = 'http://dcmapi.azurewebsites.net/API';
+    private _baseURL = 'https://dcmapi.azurewebsites.net/API';
     private _baseURLProjects = this._baseURL + '/Projects';
     private _options: { headers: Headers } = { headers: new Headers({ 'Content-Type': 'application/json' }) };
 
-    constructor(private _http: Http, private _route: Router) {
+    constructor(private _http: Http, private _route: Router) {}
+    emitProjectDetails(f)
+    {
+        this.projectDetails.emit(f);
+    }
+    getConfigurationsByProjectId(id: number):Observable<any>{
+        return this._http
+            .get(this._baseURL+"/BuildConfigurations/GetBuildConfigurationByProjectId/"+id, this._options)
+            .map((res: Response) => res.json())
+            .catch(this.handleError);
+    }
+
+    create(project: any,subUrl:any) {
+       return this._http.post(this._baseURL+subUrl, project, this._options);
 
     }
 
-    create(project: any, subUrl: any) {
-        return this._http.post(this._baseURL + subUrl, project);
+    put(project: any,subUrl:any) {
+       return this._http.put(this._baseURL+subUrl, project, this._options);
 
     }
 
-    onReadData() {
+    onReadData()
+    {
+
+            }
+  emitProjectSelected(f)
+            {   this.pushDat.emit(f);
+                this._route.navigate(['view-project']);
+
+
+            }
+    redirect(response)
+    {
+
+    this._route.navigate(['/']) ;
 
     }
-    emitProjectSelected(f) {
-        this.pushDat.emit(f);
-        this._route.navigate(['view-project']);
-
-
-    }
-    redirect(response) {
-
-        this._route.navigate(['/']);
-
-    }
-    onSuccess(response, f) {
+  onSuccess(response, f) {
 
         this._route.navigate(['/']);
     }
     read(url): Observable<any> {
         return this._http
-            .get(this._baseURL + url)
+            .get(this._baseURL+url, this._options)
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
@@ -50,10 +66,10 @@ export class SendDataService {
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
-    delete(projectId: any, url): Observable<any> {
+    delete(projectId: any,url): Observable<any> {
 
         return this._http
-            .delete(this._baseURL + url + projectId)
+            .delete(this._baseURL+url+ projectId)
             .map((res: Response) => res.json())
             .catch(this.handleError);
     }
@@ -64,7 +80,6 @@ export class SendDataService {
             .catch(this.handleError);
     }
     private handleError(error: Response) {
-        // console.log('handleError');
         return Observable.throw(error || 'Server error');
     }
 

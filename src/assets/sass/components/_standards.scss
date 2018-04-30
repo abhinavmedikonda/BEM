@@ -4,6 +4,8 @@ $html-default:          62.5%;
 $line-height:           1.4;
 $icon-line-height:      $line-height;
 $font-size:             1rem;
+$xs-font-size:          $font-size * 1.1;
+$sm-font-size:          $font-size * 1.3;
 $font-size-default:     $font-size * 1.6;
 $h1-default:            $font-size * 5;
 $h2-default:            $font-size * 3.2;
@@ -14,7 +16,6 @@ $xs-icon:               $font-size;
 $md-icon:               $font-size * 1.25;
 $lg-icon:               $font-size * 3;
 $xl-icon:               $font-size * 12;
-$xs-font-size:          $font-size * 1.1;
 
 $default-space:         10px;
 $hair-space:            $default-space * .2;
@@ -23,8 +24,12 @@ $short-space:           $default-space * .8;
 $comfortable-space:     $default-space * 1.36;
 $accordion-label-mr:    $comfortable-space;
 $generous-space:        $default-space * 1.8;
+$luxury-space:          $default-space * 2;
 $add-btn-min:           $default-space * 2.4;
 $accordion-label:       $default-space * 4.8;
+$title-below-ribbon:    $default-space * 5;
+$main-below-ribbon:     $default-space * 7;
+
 
 $icon-text-btn-padding: $short-space $default-space $short-space $thin-space;
 $button-sm-padding:     .2em 1em;
@@ -55,7 +60,7 @@ $button-in-transition:  color $transition-in, background-color $transition-in;
 $milestone-v-button-out:    color $transition-out, background-color $transition-out, border-right $transition-out;
 $milestone-v-button-in:     color $transition-in, background-color $transition-in, border-right $transition-in;
 
-$open-accordion-panel:  height $transition-out;
+$open-accordion-panel:  height $transition-in;
 $close-accordion-panel: height $transition-in;
 
 $accordion-margin-in:   margin $transition-in;
@@ -67,8 +72,51 @@ $triangle-top-border:       50px solid transparent;
 $triangle-right:            100px solid $neutral05; 
 $triangle-bottom:           50px solid transparent; 
 
+@mixin arrow-end {
+    border-top: 16px solid $breadcrumb;
+    border-left: 13px solid transparent;
+    border-bottom: 16px solid $breadcrumb;
+}
+
+@mixin arrow-end-active {
+    border-top: 16px solid $breadcrumb-active;
+    border-left: 13px solid transparent;
+    border-bottom: 16px solid $breadcrumb-active;
+}
+
+@mixin arrow-tip {
+    border-left: 13px solid $breadcrumb; 
+    border-top: 16px solid transparent; 
+    border-bottom: 16px solid transparent;
+}
+
+@mixin arrow-tip-active {
+    border-left: 13px solid $breadcrumb-active; 
+    border-top: 16px solid transparent; 
+    border-bottom: 16px solid transparent;
+}
 
 /*Contextual Controls*/
 
 $add-button:            5px 10px;
 $milestone-btn-normal:  $default-space solid $neutral07;
+
+/*=== Breakpoints ===*/
+
+$small-screen-max:        649px;
+$m-small-screen-min:      650px;
+$m-small-screen-max:      892px;
+$medium-screen-min:       893px;
+$medium-screen-max:       1087px;
+$m-large-screen-min:      1088px;
+$m-large-screen-max:      1259px;
+$large-screen-min:        1260px;
+$large-screen-max:        1524px;
+$x-large-screen-min:      1525px;
+
+$min-smartphone:          322px;
+$min-iphone5-h:           530px;
+$min-tablet:              600px;
+$min-tablet-h:            959px;
+$min-laptop:              1300px;
+$min-desktop:             1700px;

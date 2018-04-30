@@ -11,14 +11,14 @@
         background-color: $accent05;
     }
     &.save:hover {
-        background-color: $accent01;
+        background-color: $success;
         color: $neutral01;
     }
     &.cancel {
         background-color: $neutral07;
     }
     &.cancel:hover {
-        background-color: $neutral09;
+        background-color: $critical;
         color: $neutral01;
     }
     &.save,
@@ -84,6 +84,24 @@
     }
 }
 
+.control {
+    &.with-icon {
+        @include flex-row-nowrap;
+        align-items: center;
+    }
+    .icon {
+        margin-left: $short-space;
+        color: $neutral06;
+        transition: $text-in-transition;
+        &:hover,
+        &:focus,
+        &:active {
+            color: $neutral09;
+            transition: $text-out-transition;
+        }
+    }
+}
+
 /*Dropdown menu*/
 
 .drop-down {
@@ -142,14 +160,43 @@
 /*Icon toolbar*/
 
 .icon-toolbar {
-    @include flex-row-nowrap;
-    &:first-child {margin-right: $default-space;}
+    @include icon-toolbar;
+}
+
+.project-view.leadpm,
+.project-view.testlead {
+        .icon-toolbar {display: none;}
+        .phase-selector.tabs {
+            ul > .tab-btn,
+            ul > .tab-btn.is-active {
+                .icon-toolbar {display: none;}
+            }
+        }
+    .button.add {display: none;}
+    }
+
+.table-icon-toolbar {
+    @include icon-toolbar;
+    background-color: $neutral01;
+    justify-content: flex-end;
     .icon-btn {
-        line-height: $icon-line-height;
-        padding-left: $default-space;
-        color: $neutral05;
-        &:first-child {padding-left: 0;}
-        &:hover {color: $neutral01;}
+        color: $neutral06;
+        &.icon-save:hover {color: $ms-green;}
+        &.icon-cancel:hover {color: $ms-dark-red;}
+        &.icon-edit:hover {color: $neutral09;}
+    }
+}
+
+.editable {
+    .table-icon-toolbar {
+        .icon-save,
+        .icon-cancel {display: none;}
+    }
+}
+
+.editing {
+    .table-icon-toolbar {
+        .icon-edit {display: none;}
     }
 }
 
@@ -220,6 +267,10 @@
     justify-content: space-between;
     .milestone-btn-group {
         margin-bottom: 1px;
+        .label-sc {
+            color: $neutral05;
+            margin-bottom: $comfortable-space; 
+            }
         .milestone-tab {
             @include vertical-column-button;
             justify-content: flex-start;
@@ -283,7 +334,8 @@
             &:first-child {margin-top: $thin-space;}
             &:not(:last-child) {margin-bottom: $thin-space;}
             &:hover,
-            &:focus {
+            &:focus,
+            &.active {
                 color: $accent01;
                 background-color: $neutral01;
             }
@@ -324,7 +376,6 @@
         &.with-accessories {
             .accessories-indicator {
                 @include flex-vertical-jsa;
-                flex: 1 1 15px;
                 align-items: center;
                 background-color: $neutral08;
             }
@@ -414,6 +465,16 @@
     }
 }
 
+.table-head-panel {
+    background-color: $neutral02;
+    transition: $button-in-transition;
+    &:hover,
+    &:focus {
+        background-color: $accent06;
+        transition: $button-out-transition;
+    }
+}
+
 /*Onboarding Panel*/
 
 .onboard-first {
@@ -440,12 +501,14 @@
     textarea {
         @include input-text-default;
         @include standard-input;
+        @include truncate;
     }
 }
 
 .field-group {
     margin-bottom: $default-space * 1.8;
     &:last-child {margin-bottom: 0;}
+    .required {@include required-indicator;}
 }
 
 .field {
@@ -460,6 +523,8 @@
             border-color: none;
         }
     }
+    &.checkbox,
+    &.radio {@include checkbox;}
 }
 
 .large-clean-input {
@@ -468,6 +533,18 @@
 
 .field-label {
     @include label;
+}
+
+.cell-boole {
+    @include checkbox-solo;
+}
+
+.accordion-body-table {
+    .field > .control > .input {
+        @include input-text-cell;
+        @include standard-input;
+        @include truncate;
+    }
 }
 
 .task-footer {
@@ -481,89 +558,24 @@
     }
 }
 
-
-/*===========Custom checkbox and radio buttons==========*/
-
-/* Hiding default checkbox and Radio button design */
-input[type=checkbox],input[type=radio] {
-    opacity: 0;
-    position: absolute;
-    z-index: 12;
-    width: 18px;
-    height: 18px;
-}
-
-/* Disable outline when clicked*/
-input[type=checkbox]:checked,input[type=radio]:checked,input[type=checkbox]:focus,input[type=radio]:focus {
-    outline: none !important;
-}
-
-input[type=checkbox]+.lbl,input[type=radio]+.lbl {
-    position: relative;
-    z-index: 11;
-    display: inline-block;
-    margin: 0;
-    line-height: 20px;
-    min-height: 14px;
-    min-width: 14px;
-    font-weight: normal;
-}
-
-/* Basic Checkbox styles */
-input[type=checkbox]+.lbl::before,input[type=radio]+.lbl::before {
-  font-family: 'dcm-icons';
-  font-weight: normal;
-  font-size: 11px;
-  color: #2091cf;
-  content: "\e911";
-  background-color: #FAFAFA;
-  border: 1px solid #CCC;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  border-radius: 0;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  height: 13px;
-  line-height: 13px;
-  min-width: 13px;
-  margin-right: 1px;
-  margin-top: -5px;
-}
-
-/* Checked state styles */
-input[type=checkbox]:checked+.lbl::before,input[type=radio]:checked+.lbl::before {
-  display: inline-block;
-  content: '\e903';
-  background-color: #F5F8FC;
-  border-color: #adb8c0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),inset 15px 10px -12px rgba(255, 255, 255, 0.1);
-}
-
-/* Hover state styles */
-input[type=checkbox]:hover+.lbl::before,input[type=radio]:hover+.lbl::before,input[type=checkbox]+.lbl:hover::before,input[type=radio]+.lbl:hover::before {
-  border-color: #1c7aad;
-}
-
-/* Shadow when checked or Active */
-input[type=checkbox]:active+.lbl::before,input[type=radio]:active+.lbl::before,input[type=checkbox]:checked:active+.lbl::before,input[type=radio]:checked:active+.lbl::before {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-/* Disabled state styles */
-input[type=checkbox]:disabled+.lbl::before,input[type=radio]:disabled+.lbl::before,input[type=checkbox][disabled]+.lbl::before,input[type=radio][disabled]+.lbl::before,input[type=checkbox].disabled+.lbl::before,input[type=radio].disabled+.lbl::before {
-  background-color: #DDD !important;
-  border-color: #CCC !important;
-  box-shadow: none !important;
-  color: #BBB;
-}
-
-/* Styles for Radio button */
-input[type=radio]+.lbl::before {
-  border-radius: 32px;
-  font-family: Arial,Helvetica,sans-serif;
-  font-size: 36px;
-}
-
-input[type=radio]:checked+.lbl::before {
-  content: "\e903";
+.auto-complete {
+    background-color: $neutral02;
+    box-shadow: $dropdown-shadow; 
+    padding: $default-space;
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 50vh;
+    .item {
+        @include line-item;
+        @include truncate;
+        color: $neutral07;
+        transition: $text-in-transition;
+        &.selected,
+        &:focus,
+        &:hover,
+        &:active {
+            color: $neutral09;
+            transition: $text-out-transition;
+        }
+    }
 }
